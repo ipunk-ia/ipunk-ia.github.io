@@ -5,7 +5,7 @@ export const site = {
   location: "Semarang, Indonesia",
   experience: "2 years",
   tagline: "Designing interfaces that work and visuals that get remembered.",
-  email: "manuggaltehnik48@gmail.com",
+  email: "ivanghazali.creative@gmail.com",
   phone: "081215254994",
   whatsapp: "6281215254994",
   instagram: "ghazali.yyy",
