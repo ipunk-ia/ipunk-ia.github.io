@@ -11,7 +11,7 @@ const PREVIEWS = [
   { src: "/work/orlyx/board-01.jpg", alt: "ORLYX brand guide" },
   { src: "/work/wirawiri/screens.jpg", alt: "Wira Wiri app screens" },
   { src: "/work/imagin/cover.jpg", alt: "Imagin Studio website" },
-  { src: "/work/orlyx/slide-12.jpg", alt: "ORLYX apparel and social" },
+  { src: "/work/orlyx/slide-12.png", alt: "ORLYX apparel and social" },
 ] as const;
 
 const PREVIEW_WIDTH = 260;

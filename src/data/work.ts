@@ -170,7 +170,7 @@ export const graphicWork: Project[] = [
       { src: "/work/orlyx/board-01.jpg", alt: "ORLYX brand guide overview board", ratio: 16 / 9 },
       { src: "/work/orlyx/board-02.jpg", alt: "ORLYX brand system board", ratio: 16 / 9 },
       {
-        src: "/work/orlyx/slide-12.jpg",
+        src: "/work/orlyx/slide-12.png",
         alt: "ORLYX Instagram icon and apparel application",
         ratio: 1580 / 889,
       },
@@ -277,7 +277,7 @@ export const mosaicRows: { src: string; alt: string; span: number }[][] = [
   [
     { src: "/work/imagin/cover.jpg", alt: "", span: 2 },
     { src: "/work/posters/poster-05.jpg", alt: "", span: 1 },
-    { src: "/work/orlyx/slide-12.jpg", alt: "", span: 2 },
+    { src: "/work/orlyx/slide-12.png", alt: "", span: 2 },
     { src: "/work/posters/poster-09.jpg", alt: "", span: 1 },
     { src: "/work/wirawiri/mockup.jpg", alt: "", span: 1 },
     { src: "/work/orlyx/slide-14.png", alt: "", span: 2 },
@@ -353,7 +353,7 @@ export const showcaseCards: ShowcaseCard[] = [
   },
   {
     slug: "orlyx",
-    src: "/work/orlyx/slide-12.jpg",
+    src: "/work/orlyx/slide-12.png",
     alt: "ORLYX apparel and social",
     title: "ORLYX Apparel",
     desc: "The mark taken from screen to garment, packaging, and a social feed system.",
@@ -378,7 +378,7 @@ export const heroStrip = [
   { src: "/work/posters/poster-03.jpg", alt: "Poster series", tag: "Poster" },
   { src: "/work/wirawiri/mockup.jpg", alt: "Wira Wiri mockup", tag: "UI/UX" },
   { src: "/work/posters/poster-11.jpg", alt: "Poster series", tag: "Print" },
-  { src: "/work/orlyx/slide-12.jpg", alt: "ORLYX apparel", tag: "Apparel" },
+  { src: "/work/orlyx/slide-12.png", alt: "ORLYX apparel", tag: "Apparel" },
   { src: "/work/posters/poster-05.jpg", alt: "Poster series", tag: "Poster" },
   { src: "/work/orlyx/slide-14.png", alt: "ORLYX packaging", tag: "Brand" },
 ] as const;
