@@ -391,22 +391,22 @@ const en: Copy = {
         {
           no: "01",
           label: "Brief",
-          body: "ORLYX needed an identity for the opposite of a hype brand. The product is a wardrobe for the work nobody sees, so the branding could not shout.",
+          body: "ORLYX needed an identity for the opposite of a hype brand. The client asked for a mark that reads sharp before it reads loud: quiet luxury, cut edges, and a clear sense of forward vision carried by an arrow.",
         },
         {
           no: "02",
           label: "Direction",
-          body: "Black, white, and one gradient. A single geometric X mark built from four blades, set on a construction grid so it holds at sticker size and at garment scale.",
+          body: "Black, white, and one gradient. A single geometric X built from four blades, every arm cut to an arrowhead so the mark points outward in all four directions, set on a construction grid so the edges stay keen at sticker size and at garment scale.",
         },
         {
           no: "03",
           label: "Exploration",
-          body: "Drew the mark against a strict grid to keep the negative space even in all four quadrants, then tested the lockup with the wordmark at extreme letter spacing until it read as a label rather than a logo.",
+          body: "Sharpened the blade angles against a strict grid until the negative space stayed even across all four quadrants, testing how far each arm could be cut before the arrow read as aggression instead of direction. Then set the wordmark at extreme letter spacing until the lockup read as a label rather than a logo.",
         },
         {
           no: "04",
           label: "Final design",
-          body: "A brand guide covering the mark, construction, wordmark lockup, gradient, colour values, manifesto voice, and social icon behaviour inside the circular Instagram crop.",
+          body: "A brand guide covering the mark, its cut angles and construction, the wordmark lockup, gradient, colour values, manifesto voice, and social icon behaviour inside the circular Instagram crop.",
         },
         {
           no: "05",
@@ -755,22 +755,22 @@ const id: Copy = {
         {
           no: "01",
           label: "Brief",
-          body: "ORLYX butuh identitas untuk kebalikan dari brand hype. Produknya adalah pakaian untuk kerja yang tidak dilihat orang, jadi brandingnya tidak boleh berteriak.",
+          body: "ORLYX butuh identitas untuk kebalikan dari brand hype. Client minta mark yang terbaca tajam sebelum terbaca ramai: quiet luxury, sisi-sisi yang dipotong tegas, dan visi ke depan yang jelas lewat penggambaran tanda panah.",
         },
         {
           no: "02",
           label: "Arah",
-          body: "Hitam, putih, dan satu gradien. Satu mark X geometris yang dibangun dari empat bilah, diletakkan di atas grid konstruksi supaya tetap terbaca sebesar stiker maupun sebesar kaos.",
+          body: "Hitam, putih, dan satu gradien. Satu mark X geometris dari empat bilah, tiap lengannya dipotong jadi mata panah supaya mark-nya menunjuk keluar ke empat arah, diletakkan di atas grid konstruksi supaya sisinya tetap tajam sebesar stiker maupun sebesar kaos.",
         },
         {
           no: "03",
           label: "Eksplorasi",
-          body: "Menggambar mark-nya di atas grid ketat supaya ruang negatifnya rata di keempat kuadran, lalu menguji lockup wordmark dengan jarak huruf ekstrem sampai terbaca sebagai label, bukan logo.",
+          body: "Menajamkan sudut tiap bilah di atas grid ketat sampai ruang negatifnya rata di keempat kuadran, sambil menguji seberapa dalam tiap lengan bisa dipotong sebelum panahnya terbaca agresif alih-alih terarah. Lalu wordmark-nya disetel dengan jarak huruf ekstrem sampai lockup-nya terbaca sebagai label, bukan logo.",
         },
         {
           no: "04",
           label: "Desain akhir",
-          body: "Panduan brand yang mencakup mark, konstruksi, lockup wordmark, gradien, nilai warna, nada manifesto, dan perilaku ikon sosial di dalam crop lingkaran Instagram.",
+          body: "Panduan brand yang mencakup mark, sudut potong dan konstruksinya, lockup wordmark, gradien, nilai warna, nada manifesto, dan perilaku ikon sosial di dalam crop lingkaran Instagram.",
         },
         {
           no: "05",

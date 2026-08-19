@@ -41,7 +41,7 @@ function MosaicRow({ index }: { index: number }) {
               src={item.src}
               alt=""
               fill
-              sizes="384px"
+              sizes="(min-width: 768px) 384px, 256px"
               priority={index < 2 && i < 4}
               className="object-cover"
             />

@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
-import Matter from "matter-js";
+import type MatterNS from "matter-js";
 import { useCopy } from "@/i18n/LanguageProvider";
 
 type Shape = "circle" | "pill" | "square";
@@ -41,12 +41,14 @@ export function PlaySection() {
   const copy = useCopy();
   const sceneRef = useRef<HTMLDivElement>(null);
   const nodesRef = useRef<Map<string, HTMLDivElement>>(new Map());
-  const bodiesRef = useRef<Matter.Body[]>([]);
+  const bodiesRef = useRef<MatterNS.Body[]>([]);
+  const matterRef = useRef<typeof MatterNS | null>(null);
   const [isReady, setIsReady] = useState(false);
 
   const scatter = useCallback(() => {
     const scene = sceneRef.current;
-    if (!scene || bodiesRef.current.length === 0) return;
+    const Matter = matterRef.current;
+    if (!Matter || !scene || bodiesRef.current.length === 0) return;
     const { width } = scene.getBoundingClientRect();
 
     for (const body of bodiesRef.current) {
@@ -72,6 +74,25 @@ export function PlaySection() {
       return;
     }
 
+    let cleanup: (() => void) | undefined;
+    let cancelled = false;
+
+    /* Only pull the physics engine in once the playground is near the viewport. */
+    const loader = new IntersectionObserver(
+      (entries) => {
+        if (!entries.some((e) => e.isIntersecting)) return;
+        loader.disconnect();
+        void import("matter-js").then(({ default: Matter }) => {
+          if (cancelled) return;
+          matterRef.current = Matter;
+          cleanup = start(Matter, scene);
+        });
+      },
+      { rootMargin: "300px" },
+    );
+    loader.observe(scene);
+
+    function start(Matter: typeof MatterNS, scene: HTMLDivElement) {
     const { Engine, Runner, Bodies, Composite, Mouse, MouseConstraint, Events, Body } = Matter;
 
     let width = scene.clientWidth;
@@ -80,14 +101,14 @@ export function PlaySection() {
     const engine = Engine.create({ gravity: { x: 0, y: 1, scale: 0.0011 } });
 
     /* Bodies are sized from the rendered DOM node so physics matches what is drawn. */
-    const bodies: Matter.Body[] = PIECES.map((piece, i) => {
+    const bodies: MatterNS.Body[] = PIECES.map((piece, i) => {
       const node = nodesRef.current.get(piece.id);
       const w = node?.offsetWidth ?? piece.size;
       const h = node?.offsetHeight ?? piece.size;
       const x = width * ((i + 0.5) / PIECES.length);
       const y = -140 - i * 90;
 
-      const options: Matter.IBodyDefinition = {
+      const options: MatterNS.IBodyDefinition = {
         restitution: 0.55,
         friction: 0.06,
         frictionAir: 0.012,
@@ -202,6 +223,13 @@ export function PlaySection() {
       Composite.clear(engine.world, false);
       Engine.clear(engine);
       bodiesRef.current = [];
+    };
+    }
+
+    return () => {
+      cancelled = true;
+      loader.disconnect();
+      cleanup?.();
     };
   }, []);
 
