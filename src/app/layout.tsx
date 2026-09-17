@@ -2,7 +2,9 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import { JetBrains_Mono } from "next/font/google";
 import "./globals.css";
+import "lenis/dist/lenis.css";
 import { site } from "@/data/site";
+import { SmoothScroll } from "@/components/SmoothScroll";
 
 const ppMori = localFont({
   variable: "--font-mori",
@@ -48,7 +50,10 @@ export default function RootLayout({
   return (
     /* The font variables live on <html> so :root-level tokens can resolve them. */
     <html lang="en" className={`${ppMori.variable} ${jetbrainsMono.variable}`}>
-      <body className="antialiased">{children}</body>
+      <body className="antialiased">
+        <SmoothScroll />
+        {children}
+      </body>
     </html>
   );
 }

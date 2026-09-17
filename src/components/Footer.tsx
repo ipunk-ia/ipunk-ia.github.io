@@ -2,6 +2,7 @@
 
 import { site, socials } from "@/data/site";
 import { Reveal } from "@/components/Reveal";
+import { SplitChars, SplitSentences } from "@/components/SplitText";
 import { useCopy } from "@/i18n/LanguageProvider";
 
 export function Footer() {
@@ -13,17 +14,17 @@ export function Footer() {
         <Reveal>
           <p className="eyebrow">{footer.eyebrow}</p>
           <h2 className="display mt-6 text-[clamp(2.5rem,9vw,7.5rem)]">
-            {footer.title1}
+            <SplitChars text={footer.title1} />
             <br />
-            {footer.title2}
-            <span className="text-flame">{footer.accent}</span>
+            <SplitChars text={footer.title2} />
+            <SplitChars text={footer.accent} className="text-flame" />
           </h2>
         </Reveal>
 
         <div className="mt-12 grid gap-10 border-t border-line pt-10 md:mt-16 md:grid-cols-12">
           <Reveal className="md:col-span-5">
             <p className="max-w-sm text-lg leading-relaxed text-muted">
-              {footer.body}
+              <SplitSentences text={footer.body} />
             </p>
             <ul className="mt-7 flex flex-wrap gap-2">
               {footer.services.map((service) => (
@@ -60,16 +61,7 @@ export function Footer() {
             </ul>
 
             <div className="mt-8 flex flex-wrap gap-3">
-              <a
-                href={`https://wa.me/${site.whatsapp}`}
-                target="_blank"
-                rel="noreferrer noopener"
-                className="btn btn--solid"
-              >
-                {footer.chat}
-                <span aria-hidden>↗</span>
-              </a>
-              <a href={`mailto:${site.email}`} className="btn btn--outline">
+              <a href={`mailto:${site.email}`} className="btn btn--solid">
                 {footer.send}
               </a>
             </div>

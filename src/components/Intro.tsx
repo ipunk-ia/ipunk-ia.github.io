@@ -1,6 +1,7 @@
 "use client";
 
 import { Reveal } from "@/components/Reveal";
+import { SplitChars, SplitSentences } from "@/components/SplitText";
 import { useCopy } from "@/i18n/LanguageProvider";
 
 export function Intro() {
@@ -27,21 +28,21 @@ export function Intro() {
 
         <Reveal delay={80}>
           <h2 className="mt-6 max-w-4xl text-[clamp(1.75rem,4.4vw,3.5rem)] font-medium leading-[1.12] tracking-[-0.03em]">
-            {intro.headline[0]}
-            <span className="bg-sky/45 px-1.5">{intro.headline[1]}</span>,{" "}
-            <span className="bg-grass/60 px-1.5">{intro.headline[2]}</span>,{" "}
-            <span className="bg-bubble/60 px-1.5">{intro.headline[3]}</span>, and{" "}
-            <span className="bg-sun/60 px-1.5">{intro.headline[4]}</span>.
+            <SplitChars text={intro.headline[0]} />
+            <SplitChars text={intro.headline[1]} className="bg-sky/45 px-1.5" />,{" "}
+            <SplitChars text={intro.headline[2]} className="bg-grass/60 px-1.5" />,{" "}
+            <SplitChars text={intro.headline[3]} className="bg-bubble/60 px-1.5" />, and{" "}
+            <SplitChars text={intro.headline[4]} className="bg-sun/60 px-1.5" />.
           </h2>
         </Reveal>
 
         <div className="mt-12 grid gap-10 md:mt-16 md:grid-cols-12 md:gap-14">
           <Reveal delay={120} className="md:col-span-7">
             <p className="text-lg leading-relaxed text-muted md:text-xl">
-              {intro.body1}
+              <SplitSentences text={intro.body1} />
             </p>
             <p className="mt-6 text-lg leading-relaxed text-muted md:text-xl">
-              {intro.body2}
+              <SplitSentences text={intro.body2} />
             </p>
 
             <dl className="mt-10 grid grid-cols-2 gap-px overflow-hidden rounded-2xl bg-line sm:grid-cols-4">

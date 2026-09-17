@@ -298,6 +298,22 @@ export const mosaicRows: { src: string; alt: string; span: number }[][] = [
     { src: "/work/posters/poster-08.jpg", alt: "", span: 1 },
     { src: "/work/posters/poster-10.jpg", alt: "", span: 1 },
   ],
+  [
+    { src: "/work/orlyx/slide-02.png", alt: "", span: 2 },
+    { src: "/work/orlyx/slide-03.png", alt: "", span: 1 },
+    { src: "/work/orlyx/slide-04.png", alt: "", span: 2 },
+    { src: "/work/orlyx/slide-06.png", alt: "", span: 1 },
+    { src: "/work/orlyx/slide-07.png", alt: "", span: 2 },
+    { src: "/work/orlyx/slide-11.png", alt: "", span: 1 },
+  ],
+  [
+    { src: "/work/posters/poster-02.jpg", alt: "", span: 1 },
+    { src: "/work/imagin/cover.jpg", alt: "", span: 2 },
+    { src: "/work/posters/poster-08.jpg", alt: "", span: 1 },
+    { src: "/work/wirawiri/screens.jpg", alt: "", span: 2 },
+    { src: "/work/posters/poster-12.jpg", alt: "", span: 1 },
+    { src: "/work/orlyx/board-02.jpg", alt: "", span: 2 },
+  ],
 ];
 
 export type ShowcaseCard = {

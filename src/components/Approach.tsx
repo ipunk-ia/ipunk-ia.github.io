@@ -3,6 +3,7 @@
 import { useRef, useState } from "react";
 import Image from "next/image";
 import { Reveal } from "@/components/Reveal";
+import { SplitChars, SplitSentences } from "@/components/SplitText";
 import { useCopy } from "@/i18n/LanguageProvider";
 
 /** One piece of work per principle, revealed on hover. */
@@ -36,12 +37,12 @@ export function Approach() {
           <Reveal className="md:col-span-4">
             <p className="eyebrow">{approach.eyebrow}</p>
             <h2 className="display mt-5 text-[clamp(2.25rem,5vw,3.75rem)]">
-              {approach.title1}
+              <SplitChars text={approach.title1} />
               <br />
-              {approach.title2}
+              <SplitChars text={approach.title2} />
             </h2>
             <p className="mt-6 max-w-xs text-base leading-relaxed text-muted">
-              {approach.note}
+              <SplitSentences text={approach.note} />
             </p>
           </Reveal>
 

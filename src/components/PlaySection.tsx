@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import type MatterNS from "matter-js";
+import { SplitChars, SplitSentences } from "@/components/SplitText";
 import { useCopy } from "@/i18n/LanguageProvider";
 
 type Shape = "circle" | "pill" | "square";
@@ -240,14 +241,14 @@ export function PlaySection() {
           <div>
             <p className="eyebrow">{copy.play.eyebrow}</p>
             <h2 className="display mt-5 text-[clamp(2.25rem,6vw,4.5rem)]">
-              {copy.play.title1}
+              <SplitChars text={copy.play.title1} />
               <br />
-              {copy.play.title2}
+              <SplitChars text={copy.play.title2} />
             </h2>
           </div>
           <div className="flex items-center gap-4">
             <p className="max-w-[15rem] text-sm leading-relaxed text-muted">
-              {copy.play.note}
+              <SplitSentences text={copy.play.note} />
             </p>
             <button type="button" onClick={scatter} className="btn btn--outline shrink-0">
               {copy.play.shake}

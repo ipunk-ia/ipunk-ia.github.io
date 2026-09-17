@@ -5,7 +5,7 @@ export const LANGS: { code: Lang; label: string; short: string }[] = [
   { code: "id", label: "Bahasa Indonesia", short: "ID" },
 ];
 
-type Discipline = { no: string; title: string; body: string; items: string[]; color: string };
+export type Discipline = { no: string; title: string; body: string; items: string[]; color: string };
 type Principle = { no: string; title: string; body: string };
 type Study = { no: string; label: string; body: string };
 
@@ -70,7 +70,6 @@ export type Copy = {
     accent: string;
     body: string;
     services: string[];
-    chat: string;
     send: string;
   };
   modal: {
@@ -297,7 +296,6 @@ const en: Copy = {
       "Freelance",
       "Remote",
     ],
-    chat: "Chat on WhatsApp",
     send: "Send an email",
   },
   modal: {
@@ -661,7 +659,6 @@ const id: Copy = {
       "Freelance",
       "Remote",
     ],
-    chat: "Chat lewat WhatsApp",
     send: "Kirim email",
   },
   modal: {
