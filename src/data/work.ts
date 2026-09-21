@@ -143,6 +143,186 @@ export const digitalWork: Project[] = [
       },
     ],
   },
+  {
+    slug: "niso-studio",
+    index: "05",
+    title: "NISO Studio",
+    kind: "Self-directed project",
+    status: "Live",
+    year: "2025",
+    focus: ["Web Design", "UI/UX", "Editorial Layout"],
+    summary:
+      "A site for a fictional Jakarta creative studio, built around one line: clarity as a discipline. The design work itself had to demonstrate the restraint the copy talks about.",
+    link: {
+      label: "niso-site.vercel.app",
+      href: "https://niso-site.vercel.app/",
+    },
+    accent: "sun",
+    cover: {
+      src: "/work/niso/cover.jpg",
+      alt: "NISO Studio homepage with a design desk photo and the headline Clarity, as a discipline",
+      ratio: 2,
+    },
+    shots: [
+      {
+        src: "/work/niso/cover.jpg",
+        alt: "NISO Studio hero section with layered serif headline over a studio desk",
+        ratio: 2,
+      },
+      {
+        src: "/work/niso/work-wall.jpg",
+        alt: "NISO Studio work index with project photography in a two-column wall",
+        ratio: 2,
+      },
+    ],
+    study: [
+      {
+        no: "01",
+        label: "Brief",
+        body: "Build a credible studio site for a design practice whose whole pitch is restraint. The layout could not out-shout the claim it was making.",
+      },
+      {
+        no: "02",
+        label: "Direction",
+        body: "A dark editorial hero with a single serif headline layered over documentary studio photography, then a full switch to a light, almost archival index for the work itself.",
+      },
+      {
+        no: "03",
+        label: "Exploration",
+        body: "Tried a grid-heavy portfolio layout first; it read as a template. Rebuilt it as an asymmetric two-column wall so each project photo keeps its own size and crop, which reads as curated rather than generated.",
+      },
+      {
+        no: "04",
+        label: "Final design",
+        body: "Serif display type for statements, a monospace-adjacent label system for awards and publications, and generous negative space between sections so the achievements list doesn't compete with the work.",
+      },
+      {
+        no: "05",
+        label: "Production",
+        body: "Shipped as a live Next.js site on Vercel, with the work wall and achievements sections built to take new projects without touching the layout.",
+      },
+    ],
+  },
+  {
+    slug: "wastu-home-building",
+    index: "06",
+    title: "Wastu Home Building Studio",
+    kind: "Self-directed project",
+    status: "Live",
+    year: "2025",
+    focus: ["Web Design", "UI/UX", "Art Direction"],
+    summary:
+      "A site for a fictional home-building studio, built on the idea that the work worth showing is the part no one sees: foundation, framing, and finish.",
+    link: {
+      label: "contractor-site-omega.vercel.app",
+      href: "https://contractor-site-omega.vercel.app/",
+    },
+    accent: "bubble",
+    cover: {
+      src: "/work/wastu/cover.jpg",
+      alt: "Wastu Home Building Studio hero photo of a construction site at sunset",
+      ratio: 2,
+    },
+    shots: [
+      {
+        src: "/work/wastu/cover.jpg",
+        alt: "Wastu homepage hero with a sunset construction site and project size counter",
+        ratio: 2,
+      },
+      {
+        src: "/work/wastu/detail.jpg",
+        alt: "Wastu about section with founded year, principal name, and services list",
+        ratio: 2,
+      },
+    ],
+    study: [
+      {
+        no: "01",
+        label: "Brief",
+        body: "A construction studio needed a site that reads as considered as an architecture practice, not a directory listing for a contractor.",
+      },
+      {
+        no: "02",
+        label: "Direction",
+        body: "Full-bleed site photography as the hero, a plain-spoken headline ('Built to last.'), and a fact sheet layout for founding year, principal, and services instead of marketing copy.",
+      },
+      {
+        no: "03",
+        label: "Exploration",
+        body: "Tested a portfolio-grid homepage against a single-scroll narrative. The scroll version won: it lets one project's story (340 square metres, ground to finish) carry the whole first impression instead of splitting attention across thumbnails.",
+      },
+      {
+        no: "04",
+        label: "Final design",
+        body: "Warm, unstyled documentary photography, a plain sans headline system, and a thin-rule fact-sheet grid that reads more like a building permit than a brochure.",
+      },
+      {
+        no: "05",
+        label: "Production",
+        body: "Shipped as a live Next.js site on Vercel, structured to take new project galleries under the same fact-sheet pattern.",
+      },
+    ],
+  },
+  {
+    slug: "webzonly",
+    index: "07",
+    title: "Webzonly",
+    kind: "Self-directed project",
+    status: "Live",
+    year: "2025",
+    focus: ["Web Design", "Art Direction", "Motion"],
+    summary:
+      "A digital craft studio site built to prove a point about scroll: 'websites that behave like objects, weighted, responsive, and impossible to scroll past.' A full-bleed Earth shot under a serif wordmark opens the case.",
+    link: {
+      label: "webzonly.vercel.app",
+      href: "https://webzonly.vercel.app/",
+    },
+    accent: "sky",
+    cover: {
+      src: "/work/webzonly/cover.jpg",
+      alt: "Webzonly homepage with an Earth-from-orbit hero image behind the WEBZONLY wordmark",
+      ratio: 2,
+    },
+    shots: [
+      {
+        src: "/work/webzonly/cover.jpg",
+        alt: "Webzonly hero with the serif WEBZONLY wordmark over an orbital Earth photo",
+        ratio: 2,
+      },
+      {
+        src: "/work/webzonly/case-card.jpg",
+        alt: "Webzonly case study card for Sable Studio with a portrait background and gradient title",
+        ratio: 2,
+      },
+    ],
+    study: [
+      {
+        no: "01",
+        label: "Brief",
+        body: "Build a studio site whose interaction model is the pitch: heavy, weighted scroll rather than a fast, disposable scroll.",
+      },
+      {
+        no: "02",
+        label: "Direction",
+        body: "Oversized serif type over full-bleed photography for both the hero and every case card, so each scroll stop reads like a magazine spread rather than a grid item.",
+      },
+      {
+        no: "03",
+        label: "Exploration",
+        body: "Pushed the scroll weighting until cards felt like they had mass, then pulled it back once fast scrolling started to fight the browser instead of guiding it — the brief was 'weighted,' not 'blocked.'",
+      },
+      {
+        no: "04",
+        label: "Final design",
+        body: "A dark, editorial system: one serif display face, minimal chrome (CONTACTS / MENU only), and gradient-foil title treatments on each case card that shift with the background photo.",
+      },
+      {
+        no: "05",
+        label: "Production",
+        body: "Shipped as a live Next.js site on Vercel, with the case-card component built to drop in new studio work without changing the scroll mechanics.",
+      },
+    ],
+  },
 ];
 
 /* ------------------------------------------------------------------ *

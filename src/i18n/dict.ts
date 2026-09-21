@@ -378,6 +378,111 @@ const en: Copy = {
         },
       ],
     },
+    "niso-studio": {
+      title: "NISO Studio",
+      kind: "Self-directed project",
+      status: "Live",
+      focus: ["Web Design", "UI/UX", "Editorial Layout"],
+      summary:
+        "A site for a fictional Jakarta creative studio, built around one line: clarity as a discipline. The design work itself had to demonstrate the restraint the copy talks about.",
+      study: [
+        {
+          no: "01",
+          label: "Brief",
+          body: "Build a credible studio site for a design practice whose whole pitch is restraint. The layout could not out-shout the claim it was making.",
+        },
+        {
+          no: "02",
+          label: "Direction",
+          body: "A dark editorial hero with a single serif headline layered over documentary studio photography, then a full switch to a light, almost archival index for the work itself.",
+        },
+        {
+          no: "03",
+          label: "Exploration",
+          body: "Tried a grid-heavy portfolio layout first; it read as a template. Rebuilt it as an asymmetric two-column wall so each project photo keeps its own size and crop, which reads as curated rather than generated.",
+        },
+        {
+          no: "04",
+          label: "Final design",
+          body: "Serif display type for statements, a monospace-adjacent label system for awards and publications, and generous negative space between sections so the achievements list doesn't compete with the work.",
+        },
+        {
+          no: "05",
+          label: "Production",
+          body: "Shipped as a live Next.js site on Vercel, with the work wall and achievements sections built to take new projects without touching the layout.",
+        },
+      ],
+    },
+    "wastu-home-building": {
+      title: "Wastu Home Building Studio",
+      kind: "Self-directed project",
+      status: "Live",
+      focus: ["Web Design", "UI/UX", "Art Direction"],
+      summary:
+        "A site for a fictional home-building studio, built on the idea that the work worth showing is the part no one sees: foundation, framing, and finish.",
+      study: [
+        {
+          no: "01",
+          label: "Brief",
+          body: "A construction studio needed a site that reads as considered as an architecture practice, not a directory listing for a contractor.",
+        },
+        {
+          no: "02",
+          label: "Direction",
+          body: "Full-bleed site photography as the hero, a plain-spoken headline ('Built to last.'), and a fact sheet layout for founding year, principal, and services instead of marketing copy.",
+        },
+        {
+          no: "03",
+          label: "Exploration",
+          body: "Tested a portfolio-grid homepage against a single-scroll narrative. The scroll version won: it lets one project's story (340 square metres, ground to finish) carry the whole first impression instead of splitting attention across thumbnails.",
+        },
+        {
+          no: "04",
+          label: "Final design",
+          body: "Warm, unstyled documentary photography, a plain sans headline system, and a thin-rule fact-sheet grid that reads more like a building permit than a brochure.",
+        },
+        {
+          no: "05",
+          label: "Production",
+          body: "Shipped as a live Next.js site on Vercel, structured to take new project galleries under the same fact-sheet pattern.",
+        },
+      ],
+    },
+    webzonly: {
+      title: "Webzonly",
+      kind: "Self-directed project",
+      status: "Live",
+      focus: ["Web Design", "Art Direction", "Motion"],
+      summary:
+        "A digital craft studio site built to prove a point about scroll: 'websites that behave like objects, weighted, responsive, and impossible to scroll past.' A full-bleed Earth shot under a serif wordmark opens the case.",
+      study: [
+        {
+          no: "01",
+          label: "Brief",
+          body: "Build a studio site whose interaction model is the pitch: heavy, weighted scroll rather than a fast, disposable scroll.",
+        },
+        {
+          no: "02",
+          label: "Direction",
+          body: "Oversized serif type over full-bleed photography for both the hero and every case card, so each scroll stop reads like a magazine spread rather than a grid item.",
+        },
+        {
+          no: "03",
+          label: "Exploration",
+          body: "Pushed the scroll weighting until cards felt like they had mass, then pulled it back once fast scrolling started to fight the browser instead of guiding it — the brief was 'weighted,' not 'blocked.'",
+        },
+        {
+          no: "04",
+          label: "Final design",
+          body: "A dark, editorial system: one serif display face, minimal chrome (CONTACTS / MENU only), and gradient-foil title treatments on each case card that shift with the background photo.",
+        },
+        {
+          no: "05",
+          label: "Production",
+          body: "Shipped as a live Next.js site on Vercel, with the case-card component built to drop in new studio work without changing the scroll mechanics.",
+        },
+      ],
+    },
     orlyx: {
       title: "ORLYX",
       kind: "Real client project",
@@ -738,6 +843,111 @@ const id: Copy = {
           no: "05",
           label: "Produksi",
           body: "Dikirim sebagai prototipe dengan alur yang saling terhubung dan satu set layar presentasi untuk penjurian, termasuk mockup perangkat untuk deck pitch.",
+        },
+      ],
+    },
+    "niso-studio": {
+      title: "NISO Studio",
+      kind: "Proyek mandiri",
+      status: "Live",
+      focus: ["Desain Web", "UI/UX", "Tata Letak Editorial"],
+      summary:
+        "Situs untuk studio kreatif fiktif di Jakarta, dibangun di sekitar satu kalimat: kejelasan sebagai disiplin. Desainnya sendiri harus membuktikan kesederhanaan yang diucapkan copy-nya.",
+      study: [
+        {
+          no: "01",
+          label: "Brief",
+          body: "Membangun situs studio yang kredibel untuk praktik desain yang seluruh pitch-nya adalah kesederhanaan. Layoutnya tidak boleh lebih berisik dari klaim yang dibuatnya.",
+        },
+        {
+          no: "02",
+          label: "Arah",
+          body: "Hero editorial gelap dengan satu headline serif berlapis di atas foto studio dokumenter, lalu beralih penuh ke indeks terang yang hampir seperti arsip untuk bagian karya.",
+        },
+        {
+          no: "03",
+          label: "Eksplorasi",
+          body: "Mencoba layout portofolio berbasis grid dulu; hasilnya terasa seperti template. Dibangun ulang jadi dinding dua kolom asimetris agar tiap foto proyek menjaga ukuran dan crop-nya sendiri, sehingga terasa dikurasi, bukan digenerate.",
+        },
+        {
+          no: "04",
+          label: "Desain akhir",
+          body: "Tipe display serif untuk pernyataan, sistem label mirip monospace untuk penghargaan dan publikasi, serta ruang kosong yang lega antar-section agar daftar pencapaian tidak bersaing dengan karya.",
+        },
+        {
+          no: "05",
+          label: "Produksi",
+          body: "Dirilis sebagai situs Next.js live di Vercel, dengan bagian dinding karya dan pencapaian dibangun agar bisa menampung proyek baru tanpa mengubah layout.",
+        },
+      ],
+    },
+    "wastu-home-building": {
+      title: "Wastu Home Building Studio",
+      kind: "Proyek mandiri",
+      status: "Live",
+      focus: ["Desain Web", "UI/UX", "Art Direction"],
+      summary:
+        "Situs untuk studio konstruksi rumah fiktif, dibangun di atas gagasan bahwa bagian pekerjaan yang layak ditunjukkan justru yang tidak terlihat siapa pun: pondasi, rangka, dan finishing.",
+      study: [
+        {
+          no: "01",
+          label: "Brief",
+          body: "Sebuah studio konstruksi butuh situs yang terasa se-considered praktik arsitektur, bukan sekadar direktori tukang bangunan.",
+        },
+        {
+          no: "02",
+          label: "Arah",
+          body: "Foto lokasi full-bleed sebagai hero, headline yang lugas ('Built to last.'), dan tata letak fact sheet untuk tahun berdiri, principal, dan layanan, menggantikan copy marketing.",
+        },
+        {
+          no: "03",
+          label: "Eksplorasi",
+          body: "Menguji homepage grid-portofolio melawan narasi satu-scroll. Versi scroll menang: cerita satu proyek (340 meter persegi, dari tanah sampai finishing) membawa kesan pertama secara utuh alih-alih terpecah ke banyak thumbnail.",
+        },
+        {
+          no: "04",
+          label: "Desain akhir",
+          body: "Fotografi dokumenter yang hangat dan apa adanya, sistem headline sans polos, dan grid fact-sheet bergaris tipis yang terasa lebih seperti izin bangunan daripada brosur.",
+        },
+        {
+          no: "05",
+          label: "Produksi",
+          body: "Dirilis sebagai situs Next.js live di Vercel, disusun agar bisa menampung galeri proyek baru dengan pola fact-sheet yang sama.",
+        },
+      ],
+    },
+    webzonly: {
+      title: "Webzonly",
+      kind: "Proyek mandiri",
+      status: "Live",
+      focus: ["Desain Web", "Art Direction", "Motion"],
+      summary:
+        "Situs studio digital craft yang dibangun untuk membuktikan satu poin soal scroll: 'website yang berperilaku seperti objek, punya bobot, responsif, dan mustahil dilewati begitu saja.' Foto Bumi full-bleed di bawah wordmark serif membuka kasusnya.",
+      study: [
+        {
+          no: "01",
+          label: "Brief",
+          body: "Membangun situs studio yang model interaksinya adalah pitch-nya sendiri: scroll yang berbobot dan berat, bukan scroll cepat yang mudah dilupakan.",
+        },
+        {
+          no: "02",
+          label: "Arah",
+          body: "Tipe serif berukuran besar di atas fotografi full-bleed untuk hero maupun tiap kartu studi kasus, sehingga tiap titik henti scroll terasa seperti spread majalah, bukan item grid.",
+        },
+        {
+          no: "03",
+          label: "Eksplorasi",
+          body: "Mendorong bobot scroll sampai kartu-kartunya terasa punya massa, lalu menariknya kembali begitu scroll cepat mulai melawan browser alih-alih memandunya — brief-nya 'berbobot', bukan 'terhambat'.",
+        },
+        {
+          no: "04",
+          label: "Desain akhir",
+          body: "Sistem editorial gelap: satu typeface display serif, chrome minimal (cuma CONTACTS / MENU), dan olahan judul gradasi-foil di tiap kartu studi kasus yang berubah mengikuti foto latarnya.",
+        },
+        {
+          no: "05",
+          label: "Produksi",
+          body: "Dirilis sebagai situs Next.js live di Vercel, dengan komponen kartu-kasus dibangun agar karya studio baru bisa ditambahkan tanpa mengubah mekanisme scroll-nya.",
         },
       ],
     },
