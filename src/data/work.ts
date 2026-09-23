@@ -440,6 +440,67 @@ export const graphicWork: Project[] = [
       },
     ],
   },
+  {
+    slug: "youtube-thumbnails",
+    index: "08",
+    title: "YouTube Thumbnail Design",
+    kind: "Self-directed project",
+    status: "Ongoing series",
+    year: "2025",
+    focus: ["Photo Manipulation", "Thumbnail Design", "Composite", "Typography"],
+    summary:
+      "Thumbnails built the way editorial composites are: a real portrait cut cleanly from its background, then staged against a graphic or photo scene until the two read as one shot, not a sticker on a photo.",
+    accent: "flame",
+    cover: {
+      src: "/work/thumbnails/uber-the-truth.jpg",
+      alt: "THE TRUTH thumbnail with a torn-paper Uber investigation corkboard",
+      ratio: 16 / 9,
+    },
+    shots: [
+      {
+        src: "/work/thumbnails/ai-voice-agent.jpg",
+        alt: "AI Voice Agent No Code thumbnail with a shocked face and an n8n workflow diagram",
+        ratio: 16 / 9,
+      },
+      {
+        src: "/work/thumbnails/uber-the-truth.jpg",
+        alt: "THE TRUTH thumbnail with a torn-paper Uber investigation corkboard",
+        ratio: 16 / 9,
+      },
+      {
+        src: "/work/thumbnails/uber-i-was-wrong.jpg",
+        alt: "I WAS WRONG thumbnail with burning cash and a falling stock chart behind the Uber logo",
+        ratio: 16 / 9,
+      },
+    ],
+    study: [
+      {
+        no: "01",
+        label: "Brief",
+        body: "A YouTube thumbnail has one job in a crowded feed: stop the scroll in under a second. That meant every composite had to read clearly at a thumbnail's actual on-screen size, not just at full resolution.",
+      },
+      {
+        no: "02",
+        label: "Direction",
+        body: "Cut the subject clean from its source photo, then rebuild the lighting and colour grade around it so the composite reads as one consistent scene: a screen-lit face against a UI diagram, a portrait dropped into a torn-paper evidence board, a hand-on-forehead reaction lit by a burning-money graphic.",
+      },
+      {
+        no: "03",
+        label: "Exploration",
+        body: "Tested how far the supporting graphic (workflow nodes, corkboard photos, a falling stock line) could be pushed toward the background before it stopped supporting the headline and started competing with the face for attention.",
+      },
+      {
+        no: "04",
+        label: "Final design",
+        body: "A repeatable system: one expressive portrait, one high-contrast headline in a bold display face, and one graphic element doing the storytelling work, so a viewer gets the video's premise before they read a single word.",
+      },
+      {
+        no: "05",
+        label: "Production",
+        body: "Exported at 1920×1080, the standard YouTube thumbnail size, and checked at actual feed size, not just at full resolution, since that's the size the click decision actually happens at.",
+      },
+    ],
+  },
 ];
 
 export const allWork: Project[] = [...digitalWork, ...graphicWork];

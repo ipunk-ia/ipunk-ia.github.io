@@ -6,7 +6,7 @@ import { Reveal } from "@/components/Reveal";
 import { useCaseStudy } from "@/components/work/CaseStudyProvider";
 import { useCopy } from "@/i18n/LanguageProvider";
 
-const [identity, posters] = graphicWork;
+const [identity, posters, thumbnails] = graphicWork;
 
 /** Slight rotations keep the poster wall from reading as a plain grid. */
 const TILT = [-2.5, 1.8, -1.2, 2.4, -1.9, 1.1, -2.2, 1.5] as const;
@@ -16,6 +16,7 @@ export function GraphicWork() {
   const { graphic, digital, projects } = useCopy();
   const ic = projects[identity.slug];
   const pcp = projects[posters.slug];
+  const tc = projects[thumbnails.slug];
   const posterStrip = [...posters.shots, ...posters.shots];
 
   return (
@@ -158,6 +159,58 @@ export function GraphicWork() {
           </ul>
         </div>
       </Reveal>
+
+      {/* Thumbnail series */}
+      <div className="shell relative">
+        <Reveal className="mt-20 md:mt-28">
+          <div className="flex flex-wrap items-end justify-between gap-6">
+            <div>
+              <div className="flex items-center gap-3">
+                <span className="font-mono text-xs tracking-[0.16em] text-muted">
+                  {thumbnails.index}
+                </span>
+                <span className="font-mono text-xs uppercase tracking-[0.16em] text-muted">
+                  {tc.kind}
+                </span>
+              </div>
+              <h3 className="display mt-3 text-4xl md:text-6xl">{tc.title}</h3>
+              <p className="mt-5 max-w-xl text-base leading-relaxed text-muted">
+                {tc.summary}
+              </p>
+            </div>
+            <button
+              type="button"
+              onClick={() => onOpen(thumbnails.slug)}
+              className="btn btn--outline w-fit"
+            >
+              {digital.read}
+              <span aria-hidden>→</span>
+            </button>
+          </div>
+        </Reveal>
+
+        <Reveal className="mt-10 grid gap-5 sm:grid-cols-3">
+          {thumbnails.shots.map((shot) => (
+            <button
+              key={shot.src}
+              type="button"
+              onClick={() => onOpen(thumbnails.slug)}
+              aria-label={`${tc.title}: ${shot.alt}`}
+              className="group block overflow-hidden rounded-[1.25rem] shadow-[0_18px_50px_-24px_rgba(22,35,61,0.45)] transition-transform duration-500 hover:-translate-y-1"
+            >
+              <div className="relative aspect-video w-full">
+                <Image
+                  src={shot.src}
+                  alt={shot.alt}
+                  fill
+                  sizes="(min-width: 768px) 33vw, 100vw"
+                  className="object-cover transition-transform duration-[1.2s] ease-out group-hover:scale-[1.05]"
+                />
+              </div>
+            </button>
+          ))}
+        </Reveal>
+      </div>
     </section>
   );
 }

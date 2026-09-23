@@ -553,6 +553,41 @@ const en: Copy = {
         },
       ],
     },
+    "youtube-thumbnails": {
+      title: "YouTube Thumbnail Design",
+      kind: "Self-directed project",
+      status: "Ongoing series",
+      focus: ["Photo Manipulation", "Thumbnail Design", "Composite", "Typography"],
+      summary:
+        "Thumbnails built the way editorial composites are: a real portrait cut cleanly from its background, then staged against a graphic or photo scene until the two read as one shot, not a sticker on a photo.",
+      study: [
+        {
+          no: "01",
+          label: "Brief",
+          body: "A YouTube thumbnail has one job in a crowded feed: stop the scroll in under a second. That meant every composite had to read clearly at a thumbnail's actual on-screen size, not just at full resolution.",
+        },
+        {
+          no: "02",
+          label: "Direction",
+          body: "Cut the subject clean from its source photo, then rebuild the lighting and colour grade around it so the composite reads as one consistent scene: a screen-lit face against a UI diagram, a portrait dropped into a torn-paper evidence board, a hand-on-forehead reaction lit by a burning-money graphic.",
+        },
+        {
+          no: "03",
+          label: "Exploration",
+          body: "Tested how far the supporting graphic (workflow nodes, corkboard photos, a falling stock line) could be pushed toward the background before it stopped supporting the headline and started competing with the face for attention.",
+        },
+        {
+          no: "04",
+          label: "Final design",
+          body: "A repeatable system: one expressive portrait, one high-contrast headline in a bold display face, and one graphic element doing the storytelling work, so a viewer gets the video's premise before they read a single word.",
+        },
+        {
+          no: "05",
+          label: "Production",
+          body: "Exported at 1920×1080, the standard YouTube thumbnail size, and checked at actual feed size, not just at full resolution, since that's the size the click decision actually happens at.",
+        },
+      ],
+    },
   },
 };
 
@@ -1018,6 +1053,41 @@ const id: Copy = {
           no: "05",
           label: "Produksi",
           body: "Diekspor siap cetak pada rasio poster, ditambah versi crop untuk media sosial. Baris kredit yang konsisten membuat serinya terbaca sebagai satu kesatuan walau diunggah satu per satu.",
+        },
+      ],
+    },
+    "youtube-thumbnails": {
+      title: "Desain Thumbnail YouTube",
+      kind: "Proyek mandiri",
+      status: "Seri berjalan",
+      focus: ["Manipulasi Foto", "Desain Thumbnail", "Komposit", "Tipografi"],
+      summary:
+        "Thumbnail yang dibuat seperti komposit editorial: potret asli dipotong bersih dari latarnya, lalu ditata ulang di atas scene grafis atau foto sampai keduanya terbaca sebagai satu bidikan, bukan stiker yang ditempel di foto.",
+      study: [
+        {
+          no: "01",
+          label: "Brief",
+          body: "Thumbnail YouTube punya satu tugas di feed yang padat: menghentikan scroll dalam kurang dari satu detik. Artinya tiap komposit harus terbaca jelas di ukuran tampil sebenarnya, bukan cuma di resolusi penuh.",
+        },
+        {
+          no: "02",
+          label: "Arah",
+          body: "Subjek dipotong bersih dari foto sumbernya, lalu pencahayaan dan grading warnanya dibangun ulang agar komposit terbaca sebagai satu scene yang konsisten: wajah yang disinari layar di depan diagram UI, potret yang ditempatkan di papan bukti kertas robek, reaksi tangan-di-dahi yang disinari grafis uang terbakar.",
+        },
+        {
+          no: "03",
+          label: "Eksplorasi",
+          body: "Menguji seberapa jauh elemen grafis pendukung (node workflow, foto corkboard, garis saham yang jatuh) bisa didorong ke latar belakang sebelum ia berhenti mendukung headline dan mulai bersaing merebut perhatian dengan wajahnya.",
+        },
+        {
+          no: "04",
+          label: "Desain akhir",
+          body: "Sistem yang bisa diulang: satu potret ekspresif, satu headline berkontras tinggi dengan typeface display tebal, dan satu elemen grafis yang mengerjakan tugas bercerita, sehingga penonton menangkap premis video sebelum membaca satu kata pun.",
+        },
+        {
+          no: "05",
+          label: "Produksi",
+          body: "Diekspor pada 1920×1080, ukuran standar thumbnail YouTube, dan dicek pada ukuran tampil sebenarnya di feed, bukan cuma di resolusi penuh, karena di situlah keputusan klik sebenarnya terjadi.",
         },
       ],
     },
