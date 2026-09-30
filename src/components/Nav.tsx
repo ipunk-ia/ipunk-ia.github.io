@@ -151,6 +151,7 @@ export function Nav() {
       <div
         id="mobile-menu"
         hidden={!isOpen}
+        data-lenis-prevent
         className="fixed inset-0 z-40 overflow-y-auto bg-ink px-6 pb-10 pt-24 text-paper lg:hidden"
       >
         <div

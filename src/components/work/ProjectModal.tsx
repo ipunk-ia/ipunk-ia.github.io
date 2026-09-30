@@ -65,6 +65,7 @@ export function ProjectModal({ project, onClose }: Props) {
     <div
       className="fixed inset-0 z-[70] flex justify-center overflow-y-auto bg-ink/70 p-0 backdrop-blur-sm md:p-6"
       role="presentation"
+      data-lenis-prevent
       onClick={(e) => {
         if (e.target === e.currentTarget) onClose();
       }}
