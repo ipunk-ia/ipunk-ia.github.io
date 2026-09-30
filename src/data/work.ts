@@ -391,7 +391,7 @@ export const graphicWork: Project[] = [
   {
     slug: "poster-series",
     index: "04",
-    title: "Daily Poster Series",
+    title: "Random Poster Series",
     kind: "Graphic / visual exploration",
     status: "Ongoing series",
     year: "2025",
@@ -404,11 +404,11 @@ export const graphicWork: Project[] = [
       alt: "NO PRIVACY poster in orange with halftone eye",
       ratio: 1414 / 2000,
     },
-    shots: Array.from({ length: 13 }, (_, i) => {
+    shots: Array.from({ length: 14 }, (_, i) => {
       const n = String(i + 1).padStart(2, "0");
       return {
         src: `/work/posters/poster-${n}.jpg`,
-        alt: `Poster ${n} from the daily poster series`,
+        alt: `Poster ${n} from the random poster series`,
         ratio: 1414 / 2000,
       };
     }),
@@ -431,7 +431,7 @@ export const graphicWork: Project[] = [
       {
         no: "04",
         label: "Final design",
-        body: "Thirteen posters at print proportion, each carrying its own colour and subject while sharing the same typographic grid and credit system.",
+        body: "Fourteen posters at print proportion, each carrying its own colour and subject while sharing the same typographic grid and credit system.",
       },
       {
         no: "05",
@@ -596,8 +596,8 @@ export const showcaseCards: ShowcaseCard[] = [
     slug: "poster-series",
     src: "/work/posters/poster-07.jpg",
     alt: "No Privacy poster",
-    title: "Daily Posters",
-    desc: "Thirteen posters where one idea has to land while someone scrolls past.",
+    title: "Random Posters",
+    desc: "Fourteen posters where one idea has to land while someone scrolls past.",
     category: "Poster",
   },
   {

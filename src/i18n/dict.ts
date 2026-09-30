@@ -147,7 +147,7 @@ const en: Copy = {
       { title: "Imagin Studio", desc: "A live studio site for a 3D product film team, built so the render itself is the proof." },
       { title: "Wira Wiri", desc: "Travel app putting local guides, local food, and travel money into one flow." },
       { title: "ORLYX Identity", desc: "A streetwear identity built on restraint: one mark, one line, nothing louder." },
-      { title: "Daily Posters", desc: "Thirteen posters where one idea has to land while someone scrolls past." },
+      { title: "Random Posters", desc: "Fourteen posters where one idea has to land while someone scrolls past." },
       { title: "Wira Wiri Onboarding", desc: "Photography carries the mood, the interface stays quiet and out of the way." },
       { title: "ORLYX Apparel", desc: "The mark taken from screen to garment, packaging, and a social feed system." },
       { title: "Print Explorations", desc: "Halftone, duotone, and condensed type pushed until the photo becomes texture." },
@@ -519,7 +519,7 @@ const en: Copy = {
       ],
     },
     "poster-series": {
-      title: "Daily Poster Series",
+      title: "Random Poster Series",
       kind: "Graphic / visual exploration",
       status: "Ongoing series",
       focus: ["Typography", "Photo Manipulation", "Composition", "Experimental"],
@@ -544,7 +544,7 @@ const en: Copy = {
         {
           no: "04",
           label: "Final design",
-          body: "Thirteen posters at print proportion, each carrying its own colour and subject while sharing the same typographic grid and credit system.",
+          body: "Fourteen posters at print proportion, each carrying its own colour and subject while sharing the same typographic grid and credit system.",
         },
         {
           no: "05",
@@ -654,7 +654,7 @@ const id: Copy = {
       { title: "Imagin Studio", desc: "Situs studio live untuk tim film produk 3D, dibuat supaya render-nya sendiri jadi buktinya." },
       { title: "Wira Wiri", desc: "Aplikasi travel yang menyatukan pemandu lokal, kuliner lokal, dan uang perjalanan dalam satu alur." },
       { title: "Identitas ORLYX", desc: "Identitas streetwear yang dibangun dari menahan diri: satu mark, satu garis, tanpa yang berisik." },
-      { title: "Poster Harian", desc: "Tiga belas poster yang satu idenya harus sampai saat orang sedang scroll melewatinya." },
+      { title: "Poster Random", desc: "Empat belas poster yang satu idenya harus sampai saat orang sedang scroll melewatinya." },
       { title: "Onboarding Wira Wiri", desc: "Fotografi yang membawa suasana, antarmukanya tetap tenang dan tidak mengganggu." },
       { title: "Apparel ORLYX", desc: "Mark yang dibawa dari layar ke pakaian, kemasan, dan sistem feed media sosial." },
       { title: "Eksplorasi Cetak", desc: "Halftone, duotone, dan tipografi condensed didorong sampai fotonya berubah jadi tekstur." },
@@ -1022,7 +1022,7 @@ const id: Copy = {
       ],
     },
     "poster-series": {
-      title: "Seri Poster Harian",
+      title: "Seri Poster Random",
       kind: "Eksplorasi grafis / visual",
       status: "Seri berjalan",
       focus: ["Tipografi", "Manipulasi Foto", "Komposisi", "Eksperimental"],
@@ -1047,7 +1047,7 @@ const id: Copy = {
         {
           no: "04",
           label: "Desain akhir",
-          body: "Tiga belas poster dengan proporsi cetak, masing-masing membawa warna dan subjeknya sendiri tapi berbagi grid tipografi dan sistem kredit yang sama.",
+          body: "Empat belas poster dengan proporsi cetak, masing-masing membawa warna dan subjeknya sendiri tapi berbagi grid tipografi dan sistem kredit yang sama.",
         },
         {
           no: "05",
