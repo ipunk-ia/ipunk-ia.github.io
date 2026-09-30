@@ -503,7 +503,79 @@ export const graphicWork: Project[] = [
   },
 ];
 
-export const allWork: Project[] = [...digitalWork, ...graphicWork];
+/* ------------------------------------------------------------------ *
+ * GEN AI - generated imagery
+ * ------------------------------------------------------------------ */
+
+const genAiShots: [string, string, number][] = [
+  ["diverse-moss-cream", "Green glass moss cream jar resting on wet forest moss in morning light", 1493 / 2000],
+  ["forest-serum-trio", "Three amber dropper bottles on mossy rocks in a misty forest", 1493 / 2000],
+  ["amor-shampoo", "Black AMOR shampoo bottle floating with fern, orchid and charcoal", 1493 / 2000],
+  ["chrome-couture", "Couture portrait in a crystal mesh bodysuit and chrome corset holding a blade", 896 / 1280],
+  ["graffiti-fisheye", "Fisheye editorial portrait inside a graffiti covered bathroom stall", 1493 / 2000],
+  ["rainforest-floor", "Sunlit rainforest floor with mossy rocks and ferns", 1493 / 2000],
+  ["moss-cream-jar", "Moss cream jar on a wooden kitchen table, phone snapshot style", 764 / 1024],
+  ["honey-lemon-beer", "Tall glass of iced honey lemon beer with an orange slice", 1493 / 2000],
+  ["strawberry-beer", "Short glass of strawberry beer with sliced strawberries and ice", 1493 / 2000],
+  ["lakeside-garden", "Lawn opening onto a lake framed by flowering bushes", 1493 / 2000],
+  ["strawberries", "Whole and halved strawberries on white", 1493 / 2000],
+  ["orange-slices", "Floating orange rounds and wedges on white", 1493 / 2000],
+  ["dino-nugget-plate", "Plate of dinosaur shaped nuggets with fries, peas, corn and tomatoes", 1493 / 2000],
+  ["dino-nugget-trex", "Single T-rex shaped chicken nugget on white", 1493 / 2000],
+  ["dino-nugget-cutout", "T-rex nugget cutout on a transparency grid", 1493 / 2000],
+];
+
+export const genAiWork: Project = {
+  slug: "gen-ai",
+  index: "09",
+  title: "Gen AI Imagery",
+  kind: "Generative AI / art direction",
+  status: "Ongoing practice",
+  year: "2025",
+  focus: ["Generative AI", "Product Visuals", "Art Direction", "Compositing"],
+  summary:
+    "Product shots, editorial portraits and composite assets made with image generation, then art directed and retouched until they hold up next to a real photo shoot.",
+  accent: "grass",
+  cover: {
+    src: "/work/gen-ai/diverse-moss-cream.jpg",
+    alt: genAiShots[0][1],
+    ratio: genAiShots[0][2],
+  },
+  shots: genAiShots.map(([name, alt, ratio]) => ({
+    src: `/work/gen-ai/${name}.jpg`,
+    alt,
+    ratio,
+  })),
+  study: [
+    {
+      no: "01",
+      label: "Brief",
+      body: "Treat generation like a photo shoot, not a slot machine: decide the product, the light and the mood first, then generate toward that instead of picking whatever comes out.",
+    },
+    {
+      no: "02",
+      label: "Direction",
+      body: "Each set has one lighting story. Low morning sun through forest haze for skincare, a clean studio gradient for the floating bottle, hard flash and fisheye for the street portrait.",
+    },
+    {
+      no: "03",
+      label: "Exploration",
+      body: "Many rounds per image, adjusting lens, angle and surface detail (condensation, crumb texture, fabric sparkle) until the small things stop giving the image away.",
+    },
+    {
+      no: "04",
+      label: "Final design",
+      body: "Standalone hero images, plus isolated assets like the beer glasses, fruit and garden that were generated separately and composited into the Honey Lemon and Strawberry Beer poster.",
+    },
+    {
+      no: "05",
+      label: "Production",
+      body: "Labels and type are set by hand afterwards, then colour graded and cleaned up so the output is ready for social, packaging mockups or poster work.",
+    },
+  ],
+};
+
+export const allWork: Project[] = [...digitalWork, ...graphicWork, genAiWork];
 
 /** Full-bleed mosaic behind the hero headline, four moving rows. */
 export const mosaicRows: { src: string; alt: string; span: number }[][] = [

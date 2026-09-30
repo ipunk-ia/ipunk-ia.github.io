@@ -53,6 +53,7 @@ export type Copy = {
     visit: string;
   };
   graphic: { eyebrow: string; title: string; note: string; viewAll: string };
+  genAi: { eyebrow: string; title: string; note: string };
   approach: { eyebrow: string; title1: string; title2: string; note: string };
   principles: Principle[];
   play: {
@@ -91,6 +92,7 @@ const en: Copy = {
       { label: "Work", href: "#showcase" },
       { label: "Craft", href: "#craft" },
       { label: "Visual", href: "#visual" },
+      { label: "Gen AI", href: "#gen-ai" },
       { label: "Contact", href: "#contact" },
     ],
     cta: "Get in touch",
@@ -240,6 +242,11 @@ const en: Copy = {
     title: "Brand, print & poster",
     note: "Different job from the screens above. Here the whole message has to land in one glance, with no second screen to explain it.",
     viewAll: "View all posters",
+  },
+  genAi: {
+    eyebrow: "Selected work / Gen AI",
+    title: "Generated, then directed",
+    note: "Image generation used like a studio: the light, the product and the mood are decided first, then pushed until nothing gives it away.",
   },
   approach: {
     eyebrow: "Design approach",
@@ -588,6 +595,21 @@ const en: Copy = {
         },
       ],
     },
+    "gen-ai": {
+      title: "Gen AI Imagery",
+      kind: "Generative AI / art direction",
+      status: "Ongoing practice",
+      focus: ["Generative AI", "Product Visuals", "Art Direction", "Compositing"],
+      summary:
+        "Product shots, editorial portraits and composite assets made with image generation, then art directed and retouched until they hold up next to a real photo shoot.",
+      study: [
+        { no: "01", label: "Brief", body: "Treat generation like a photo shoot, not a slot machine: decide the product, the light and the mood first, then generate toward that instead of picking whatever comes out." },
+        { no: "02", label: "Direction", body: "Each set has one lighting story. Low morning sun through forest haze for skincare, a clean studio gradient for the floating bottle, hard flash and fisheye for the street portrait." },
+        { no: "03", label: "Exploration", body: "Many rounds per image, adjusting lens, angle and surface detail (condensation, crumb texture, fabric sparkle) until the small things stop giving the image away." },
+        { no: "04", label: "Final design", body: "Standalone hero images, plus isolated assets like the beer glasses, fruit and garden that were generated separately and composited into the Honey Lemon and Strawberry Beer poster." },
+        { no: "05", label: "Production", body: "Labels and type are set by hand afterwards, then colour graded and cleaned up so the output is ready for social, packaging mockups or poster work." },
+      ],
+    },
   },
 };
 
@@ -598,6 +620,7 @@ const id: Copy = {
       { label: "Karya", href: "#showcase" },
       { label: "Keahlian", href: "#craft" },
       { label: "Visual", href: "#visual" },
+      { label: "Gen AI", href: "#gen-ai" },
       { label: "Kontak", href: "#contact" },
     ],
     cta: "Hubungi saya",
@@ -747,6 +770,11 @@ const id: Copy = {
     title: "Brand, cetak & poster",
     note: "Pekerjaan yang berbeda dari layar di atas. Di sini seluruh pesan harus sampai dalam satu pandangan, tanpa layar kedua untuk menjelaskan.",
     viewAll: "Lihat semua poster",
+  },
+  genAi: {
+    eyebrow: "Karya pilihan / Gen AI",
+    title: "Digenerate, lalu diarahkan",
+    note: "Image generation dipakai seperti studio foto: cahaya, produk, dan suasana ditentukan dulu, lalu digarap sampai tidak ada yang terlihat palsu.",
   },
   approach: {
     eyebrow: "Pendekatan desain",
@@ -1089,6 +1117,21 @@ const id: Copy = {
           label: "Produksi",
           body: "Diekspor pada 1920×1080, ukuran standar thumbnail YouTube, dan dicek pada ukuran tampil sebenarnya di feed, bukan cuma di resolusi penuh, karena di situlah keputusan klik sebenarnya terjadi.",
         },
+      ],
+    },
+    "gen-ai": {
+      title: "Visual Gen AI",
+      kind: "Generative AI / art direction",
+      status: "Praktik berjalan",
+      focus: ["Generative AI", "Visual Produk", "Art Direction", "Komposit"],
+      summary:
+        "Foto produk, potret editorial, dan aset komposit yang dibuat dengan image generation, lalu diarahkan dan diretouch sampai sejajar dengan hasil pemotretan asli.",
+      study: [
+        { no: "01", label: "Brief", body: "Memperlakukan generation seperti sesi foto, bukan mesin undian: produk, cahaya, dan suasana ditentukan dulu, lalu hasilnya diarahkan ke sana, bukan asal pilih yang keluar." },
+        { no: "02", label: "Arah", body: "Tiap set punya satu cerita cahaya. Matahari pagi menembus kabut hutan untuk skincare, gradasi studio yang bersih untuk botol melayang, flash keras dan fisheye untuk potret jalanan." },
+        { no: "03", label: "Eksplorasi", body: "Banyak putaran per gambar, mengatur lensa, sudut, dan detail permukaan (embun, tekstur tepung, kilau kain) sampai detail kecilnya tidak lagi membongkar gambarnya." },
+        { no: "04", label: "Desain akhir", body: "Gambar hero yang berdiri sendiri, ditambah aset terpisah seperti gelas bir, buah, dan taman yang digenerate sendiri-sendiri lalu dikomposit menjadi poster Honey Lemon dan Strawberry Beer." },
+        { no: "05", label: "Produksi", body: "Label dan tipografi dipasang manual setelahnya, lalu di-color grade dan dibersihkan sampai siap untuk sosial media, mockup kemasan, atau poster." },
       ],
     },
   },

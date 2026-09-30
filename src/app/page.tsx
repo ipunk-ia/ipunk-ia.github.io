@@ -5,6 +5,7 @@ import { Showcase } from "@/components/Showcase";
 import { Disciplines } from "@/components/Disciplines";
 import { DigitalWork } from "@/components/work/DigitalWork";
 import { GraphicWork } from "@/components/work/GraphicWork";
+import { GenAiWork } from "@/components/work/GenAiWork";
 import { CaseStudyProvider } from "@/components/work/CaseStudyProvider";
 import { LanguageProvider } from "@/i18n/LanguageProvider";
 import { Approach } from "@/components/Approach";
@@ -23,6 +24,7 @@ export default function Home() {
           <Disciplines />
           <DigitalWork />
           <GraphicWork />
+          <GenAiWork />
           <Approach />
           <PlaySection />
         </main>
