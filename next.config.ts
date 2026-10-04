@@ -1,10 +1,10 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* Static export so the site can be served from GitHub Pages. */
+  /* Static export, served as plain files by Vercel. */
   output: "export",
   images: {
-    /* Pages cannot optimise on request, so widths are built ahead of time. */
+    /* No image optimiser at request time: widths are built ahead of time by scripts/gen-images.sh. */
     loader: "custom",
     loaderFile: "./src/lib/image-loader.ts",
     /* Must match WIDTHS in scripts/gen-images.sh. */

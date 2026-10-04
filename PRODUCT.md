@@ -21,7 +21,7 @@ One designer who covers the full range a studio hires for: brand and poster work
 - Copy is bilingual, English default with an Indonesian toggle (`src/i18n/dict.ts`).
 
 ## Capabilities and Constraints
-- Next.js 16 static export, deployed to GitHub Pages (ipunk-ia.github.io) via `.github/workflows/deploy.yml`. No server, no on-request image optimisation.
+- Next.js 16 static export, deployed on Vercel (project `ivan_creative_portofolio`, production from `main`). No server, no on-request image optimisation.
 - Images are pre-built to fixed widths by `scripts/gen-images.sh` and served through `src/lib/image-loader.ts`; widths must match `next.config.ts`.
 - Case studies open in a modal driven by `src/data/work.ts`.
 - Owned font files: PP Mori (Regular, SemiBold, Extralight) in `src/fonts/`.
