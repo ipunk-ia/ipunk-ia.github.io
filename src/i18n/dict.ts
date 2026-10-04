@@ -21,7 +21,7 @@ export type Copy = {
   welcome: string;
   hero: { left: string; right: string; disciplines: [string, string]; city: string };
   statement: { text: string; notes: [string, string][] };
-  work: { title: string; hint: string; open: string };
+  work: { title: string; hint: string; open: string; prev: string; next: string };
   archive: { title: string };
   services: { title: [string, string]; rows: { title: string; body: string }[] };
   about: { label: string; text: string; body: string; caption: string; badge: string };
@@ -66,8 +66,10 @@ const en: Copy = {
   },
   work: {
     title: "Work that started with a brief and ended up somewhere better.",
-    hint: "Keep scrolling to move the ribbon. Click a piece to open it.",
+    hint: "Scroll or use the arrows to move the ribbon. Click a piece to open it.",
     open: "Open case study",
+    prev: "Previous",
+    next: "Next",
   },
   archive: {
     title: "Posters, identity boards and images, made to land in one glance.",
@@ -469,8 +471,10 @@ const id: Copy = {
   },
   work: {
     title: "Karya yang berawal dari brief dan berakhir di tempat yang lebih baik.",
-    hint: "Terus scroll untuk menggeser pita. Klik karya untuk membukanya.",
+    hint: "Scroll atau pakai panah untuk menggeser pita. Klik karya untuk membukanya.",
     open: "Buka studi kasus",
+    prev: "Sebelumnya",
+    next: "Berikutnya",
   },
   archive: {
     title: "Poster, papan identitas, dan gambar, dibuat untuk sampai dalam sekali lihat.",

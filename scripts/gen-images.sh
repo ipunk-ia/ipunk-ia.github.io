@@ -3,7 +3,7 @@
 # Keep WIDTHS in sync with images.deviceSizes + images.imageSizes in next.config.ts.
 set -euo pipefail
 
-WIDTHS=(160 320 640 768 1080 1600 2400)
+WIDTHS=(160 320 640 768 1080 1200 1600 2400)
 ROOT="$(cd "$(dirname "$0")/.." && pwd)/public/work"
 
 find "$ROOT" -type f \( -name '*.jpg' -o -name '*.png' \) -not -name '*-[0-9]*.webp' | while read -r src; do
