@@ -61,7 +61,6 @@ export function Services() {
                   src={pic.src}
                   alt=""
                   fill
-                  loading="eager"
                   sizes="13vw"
                   className={`object-cover transition-opacity duration-300 ${i === active ? "opacity-100" : "opacity-0"}`}
                 />

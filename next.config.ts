@@ -9,7 +9,7 @@ const nextConfig: NextConfig = {
     loaderFile: "./src/lib/image-loader.ts",
     /* Must match WIDTHS in scripts/gen-images.sh. */
     imageSizes: [160, 320],
-    deviceSizes: [640, 768, 1080, 1600, 2400],
+    deviceSizes: [640, 768, 1080, 1200, 1600, 2400],
     formats: ["image/webp"],
   },
   trailingSlash: true,

@@ -2,6 +2,7 @@
 
 import { useEffect } from "react";
 import Lenis from "lenis";
+import { setLenis } from "@/lib/scroll";
 
 /** Slower, heavier easing so scrolling reads as deliberate rather than snappy. */
 const SCROLL_DURATION = 1.6;
@@ -12,6 +13,7 @@ export function SmoothScroll() {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
     const lenis = new Lenis({ duration: SCROLL_DURATION, autoToggle: true });
+    setLenis(lenis);
 
     let frame = 0;
     const raf = (time: number) => {
@@ -22,6 +24,7 @@ export function SmoothScroll() {
 
     return () => {
       cancelAnimationFrame(frame);
+      setLenis(null);
       lenis.destroy();
     };
   }, []);

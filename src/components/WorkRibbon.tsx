@@ -8,6 +8,7 @@ import imageLoader from "@/lib/image-loader";
 import { layoutCards } from "@/components/ribbon/layout";
 import type { RibbonItem } from "@/components/ribbon/mountRibbon";
 import { useCursorFollower } from "@/lib/useCursorFollower";
+import { scrollToY } from "@/lib/scroll";
 
 /*
  * Pinned section: vertical scroll drives the WebGL ribbon sideways. The DOM, the section height and
@@ -15,13 +16,13 @@ import { useCursorFollower } from "@/lib/useCursorFollower";
  */
 
 const TEXTURE_WIDTH_PX = 1600;
-/** Vertical scroll spent per pixel of horizontal travel. */
-const SCROLL_PER_PX = 1;
+/** Vertical scroll spent per pixel of horizontal travel (was 1; 0.6 keeps ten cards from feeling endless). */
+const SCROLL_PER_PX = 0.6;
 /** Gaps between cards read as "no card" for a few frames; keep the badge up through them. */
 const BADGE_HIDE_DELAY_MS = 160;
 const BADGE_OFFSET_PX = 16;
-/** Start downloading three.js this far ahead of the section (two viewports). */
-const PRELOAD_MARGIN = "200% 0px";
+/** Start downloading three.js half a viewport ahead: close enough to be ready, far enough to stay off the first load. */
+const PRELOAD_MARGIN = "50% 0px";
 
 const ribbonProjects: Project[] = ribbonOrder
   .map((slug) => allWork.find((p) => p.slug === slug))
@@ -33,10 +34,10 @@ export function WorkRibbon() {
   const openLabel = work.open;
   const sectionRef = useRef<HTMLElement>(null);
   const stageRef = useRef<HTMLDivElement>(null);
-  const nowRef = useRef<HTMLParagraphElement>(null);
   const { ref: badgeRef, move: moveBadge, reset: resetBadge } = useCursorFollower<HTMLSpanElement>();
   const pickRef = useRef<(x: number, y: number) => string | null>(() => null);
   const [travel, setTravel] = useState(0);
+  const [now, setNow] = useState(0);
 
   const items = useMemo<RibbonItem[]>(
     () =>
@@ -80,11 +81,7 @@ export function WorkRibbon() {
         badgeHide = window.setTimeout(() => (badge.dataset.shown = "false"), BADGE_HIDE_DELAY_MS);
       }
     };
-    const onNow = (index: number) => {
-      if (!nowRef.current) return;
-      const n = String(index + 1).padStart(2, "0");
-      nowRef.current.textContent = `${n} / ${String(items.length).padStart(2, "0")}  ${items[index].title}`;
-    };
+    const onNow = (index: number) => setNow(index);
     const onPointer = (point: { x: number; y: number } | null) => {
       if (point) moveBadge(point.x + BADGE_OFFSET_PX, point.y + BADGE_OFFSET_PX);
       else resetBadge();
@@ -113,6 +110,19 @@ export function WorkRibbon() {
       teardown();
     };
   }, [items, openLabel, badgeRef, moveBadge, resetBadge]);
+
+  /** Scrolls the page so card `index` sits in the centre of the pinned stage. */
+  const goTo = (index: number) => {
+    const stage = stageRef.current;
+    const section = sectionRef.current;
+    if (!stage || !section) return;
+    const { cards, minScroll } = layoutCards(items, stage.clientWidth, stage.clientHeight);
+    const card = cards[Math.max(0, Math.min(cards.length - 1, index))];
+    const track = Math.min(0, Math.max(minScroll, stage.clientWidth / 2 - (card.left + card.width / 2)));
+    const progress = minScroll < 0 ? track / minScroll : 0;
+    const span = section.offsetHeight - window.innerHeight;
+    scrollToY(section.offsetTop + progress * span);
+  };
 
   const onStageClick = (e: React.MouseEvent<HTMLDivElement>) => {
     const rect = e.currentTarget.getBoundingClientRect();
@@ -147,7 +157,24 @@ export function WorkRibbon() {
 
         <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 pb-6 md:pb-8">
           <div className="shell flex flex-col gap-2 text-[0.9375rem] md:flex-row md:items-end md:justify-between md:gap-6">
-            <p ref={nowRef} className="whitespace-pre tabular-nums" aria-hidden="true" />
+            <div className="flex items-center gap-5">
+              <p className="whitespace-pre tabular-nums" aria-live="polite">
+                {String(now + 1).padStart(2, "0")} / {String(items.length).padStart(2, "0")}  {items[now]?.title}
+              </p>
+              <div className="pointer-events-auto flex gap-3">
+                <button type="button" className="link disabled:opacity-40" onClick={(e) => (e.stopPropagation(), goTo(now - 1))} disabled={now === 0}>
+                  &larr; {work.prev}
+                </button>
+                <button
+                  type="button"
+                  className="link disabled:opacity-40"
+                  onClick={(e) => (e.stopPropagation(), goTo(now + 1))}
+                  disabled={now === items.length - 1}
+                >
+                  {work.next} &rarr;
+                </button>
+              </div>
+            </div>
             <p className="max-w-[30ch] text-dim md:text-right">{work.hint}</p>
           </div>
         </div>

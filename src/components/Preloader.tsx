@@ -13,25 +13,30 @@ type Props = {
   label: string;
 };
 
-/* Vault: Element - Splash Preloader Frame Stack Morph (set 3). Variables kept as documented. */
+/*
+ * Vault: Element - Splash Preloader Frame Stack Morph (set 3), compressed so the whole welcome is
+ * over in ~1.3s (owner's performance brief: max 1.5s, never waits on assets). The vault's original
+ * pacing was 0.5s per frame and a 1.2s wipe, ~3.7s in total.
+ */
 const TIMING = {
-  frameDelay: 0.5,
-  frameDuration: 1.5,
+  frameDelay: 0.15,
+  frameDuration: 0.6,
   counterSteps: [27, 42, 68, 92, 99],
-  counterEnter: 0.85,
-  counterTick: 0.6,
-  counterExit: 0.95,
-  wipeDelay: 0.5,
-  wipeDuration: 1.2,
-  morphDelay: 0.1,
-  morphDuration: 0.8,
+  counterEnter: 0.4,
+  counterTick: 0.3,
+  counterExit: 0.4,
+  wipeDelay: 0.1,
+  wipeDuration: 0.6,
+  morphDelay: 0.05,
+  morphDuration: 0.5,
 };
 const FRAME_SCALE_FROM = 1.5;
-/** Longest the welcome waits for its first image before it starts anyway (slow connections). */
-const FIRST_FRAME_WAIT_MS = 1200;
 /** Set once the welcome has played; the inline script in layout.tsx reads it before first paint. */
 export const WELCOME_SEEN_KEY = "welcome-seen";
-const FRAME_WIDTH_PX = 768;
+/* Same box as the hero deck card (--frame-w), so the browser can pick the right width. */
+const FRAME_SIZES = "(min-width: 1600px) 352px, (min-width: 1092px) 22vw, 240px";
+const FRAME_WIDTHS = [320, 640, 768, 1080];
+const frameSrcSet = (src: string) => FRAME_WIDTHS.map((w) => `${imageLoader({ src, width: w })} ${w}w`).join(", ");
 const DIGITS = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 
 function Digit() {
@@ -70,8 +75,6 @@ export function Preloader({ onReveal, onComplete, label }: Props) {
     window.scrollTo(0, 0);
     html.classList.add("is-loading");
 
-    let timeline: gsap.core.Timeline | null = null;
-    let cancelled = false;
     const ctx = gsap.context(() => {
       const q = gsap.utils.selector(root);
       const [tens, ones] = q(".preloader__digit-inner");
@@ -96,8 +99,7 @@ export function Preloader({ onReveal, onComplete, label }: Props) {
         }
         onComplete();
       };
-      const tl = gsap.timeline({ onComplete: finish, paused: true });
-      timeline = tl;
+      const tl = gsap.timeline({ onComplete: finish });
       tl.fromTo(
         ".preloader__digits",
         { yPercent: 100 },
@@ -157,15 +159,7 @@ export function Preloader({ onReveal, onComplete, label }: Props) {
         );
     }, root);
 
-    // Start once the first frame can actually show something, or after a short wait regardless.
-    const firstImage = root.querySelector("img");
-    const wait = new Promise((resolve) => window.setTimeout(resolve, FIRST_FRAME_WAIT_MS));
-    void Promise.race([firstImage?.decode().catch(() => undefined), wait]).then(() => {
-      if (!cancelled) timeline?.play();
-    });
-
     return () => {
-      cancelled = true;
       ctx.revert();
       html.classList.remove("is-loading");
     };
@@ -182,10 +176,12 @@ export function Preloader({ onReveal, onComplete, label }: Props) {
             <div key={pic.src} className="preloader__frame">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src={imageLoader({ src: pic.src, width: FRAME_WIDTH_PX })}
+                src={imageLoader({ src: pic.src, width: 768 })}
+                srcSet={frameSrcSet(pic.src)}
+                sizes={FRAME_SIZES}
                 alt=""
                 decoding="async"
-                fetchPriority={i === 0 ? "high" : "auto"}
+                fetchPriority={i === 0 ? "high" : "low"}
               />
             </div>
           ))}

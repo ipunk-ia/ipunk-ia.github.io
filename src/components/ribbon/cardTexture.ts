@@ -9,6 +9,8 @@ const MAX_TEX_H = 1280;
 
 export interface CardTexture {
   texture: THREE.CanvasTexture;
+  /** Starts the image download; the ribbon calls it only for cards near the viewport. Idempotent. */
+  load: () => void;
 }
 
 function drawCover(ctx: CanvasRenderingContext2D, img: HTMLImageElement, w: number, h: number) {
@@ -22,7 +24,10 @@ function drawCover(ctx: CanvasRenderingContext2D, img: HTMLImageElement, w: numb
   }
 }
 
-/** Canvas-backed card texture. `onUpdate` fires once the image lands so the caller can render on demand. */
+/**
+ * Canvas-backed card texture. It starts as a dark placeholder and only downloads its image when
+ * load() is called; `onUpdate` fires once the image lands so the caller can render on demand.
+ */
 export function createCardTexture(
   src: string,
   width: number,
@@ -46,15 +51,20 @@ export function createCardTexture(
   texture.generateMipmaps = true;
   texture.anisotropy = anisotropy;
 
-  const img = new Image();
-  img.decoding = "async";
-  img.onload = () => {
-    drawCover(ctx, img, canvas.width, canvas.height);
-    texture.needsUpdate = true;
-    onUpdate();
+  let requested = false;
+  const load = () => {
+    if (requested) return;
+    requested = true;
+    const img = new Image();
+    img.decoding = "async";
+    img.onload = () => {
+      drawCover(ctx, img, canvas.width, canvas.height);
+      texture.needsUpdate = true;
+      onUpdate();
+    };
+    // On error the dark placeholder card stays; a missing image must never break the ribbon.
+    img.src = src;
   };
-  // On error the dark placeholder card stays; a missing image must never break the ribbon.
-  img.src = src;
 
-  return { texture };
+  return { texture, load };
 }

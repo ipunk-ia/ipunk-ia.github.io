@@ -185,14 +185,20 @@ export function mountRibbon(stage: HTMLElement, section: HTMLElement, items: Rib
   // ── Scroll progress drives the track ──
   let scroll = 0;
   let target = 0;
+  let scrollDirty = true;
+  // Read layout inside the animation frame, never in the scroll event itself (no forced reflow).
   const readScroll = () => {
     const rect = section.getBoundingClientRect();
     const span = rect.height - window.innerHeight;
     const progress = span > 0 ? Math.min(1, Math.max(0, -rect.top / span)) : 0;
     target = layout.minScroll * progress;
+    scrollDirty = false;
+  };
+  const onScroll = () => {
+    scrollDirty = true;
     wake();
   };
-  window.addEventListener("scroll", readScroll, { passive: true });
+  window.addEventListener("scroll", onScroll, { passive: true });
 
   // Hover is mouse-only; touch has no hover and must not leave cards dented.
   let mouse: { x: number; y: number } | null = null;
@@ -237,10 +243,21 @@ export function mountRibbon(stage: HTMLElement, section: HTMLElement, items: Rib
     groundUniforms.u_leanW.value = sheet.W;
   }
 
+  /** Download textures only for cards on screen and the one either side of the centre card. */
+  function loadNearby(nearest: number) {
+    cards.forEach((card, idx) => {
+      const c = layout.cards[idx];
+      const left = c.left + scroll;
+      const onScreen = left + c.width > 0 && left < width;
+      if (onScreen || Math.abs(idx - nearest) <= 1) card.tex.load();
+    });
+  }
+
   function frame(now: number) {
     const dtRatio = Math.min((now - lastTime) / 1000, MAX_DT) * 60;
     lastTime = now;
     const reduce = reducedMotion.matches;
+    if (scrollDirty) readScroll();
 
     const diff = target - scroll;
     scroll += diff * ease(SCROLL_EASE, dtRatio);
@@ -301,6 +318,7 @@ export function mountRibbon(stage: HTMLElement, section: HTMLElement, items: Rib
       nowIndex = nearest;
       hooks.onNow(nearest);
     }
+    loadNearby(nearest);
 
     renderer.render(scene, camera);
 
@@ -323,11 +341,12 @@ export function mountRibbon(stage: HTMLElement, section: HTMLElement, items: Rib
 
   readScroll();
   scroll = target;
+  wake();
 
   const teardown = () => {
     cancelAnimationFrame(animId);
     running = false;
-    window.removeEventListener("scroll", readScroll);
+    window.removeEventListener("scroll", onScroll);
     window.removeEventListener("resize", handleResize);
     stage.removeEventListener("pointermove", onPointerMove);
     stage.removeEventListener("pointerleave", onPointerLeave);

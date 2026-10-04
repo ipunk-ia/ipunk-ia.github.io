@@ -79,7 +79,7 @@ export function Hero() {
                 transform: `translate(-50%, -50%) translate(calc(var(--frame-w) * ${s.x}), calc(var(--frame-w) * ${s.y})) scale(${s.scale})`,
               }}
             >
-              <Image src={pic.src} alt={pic.alt} fill loading="eager" fetchPriority={k === 0 ? "high" : "auto"} sizes="(min-width: 1600px) 352px, (min-width: 1092px) 22vw, 240px" className="object-cover" />
+              <Image src={pic.src} alt={pic.alt} fill loading={k === 0 ? "eager" : "lazy"} fetchPriority={k === 0 ? "high" : "low"} sizes="(min-width: 1600px) 352px, (min-width: 1092px) 22vw, 240px" className="object-cover" />
             </div>
           );
         })}
