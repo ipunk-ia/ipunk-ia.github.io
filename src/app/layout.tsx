@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
-import { JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import "lenis/dist/lenis.css";
 import { site } from "@/data/site";
@@ -16,16 +15,10 @@ const ppMori = localFont({
   ],
 });
 
-const jetbrainsMono = JetBrains_Mono({
-  variable: "--font-jbmono",
-  subsets: ["latin"],
-  display: "swap",
-});
-
 export const metadata: Metadata = {
   title: `${site.name} - UI/UX, Web & Graphic Designer`,
   description:
-    "Designer from Semarang, Indonesia. UI/UX, web design, brand identity, and visual work, with an AI-augmented workflow.",
+    "Designer from Semarang, Indonesia. Interfaces that work and visuals that get remembered: UI/UX, web, brand and poster design.",
   keywords: [
     "UI/UX designer",
     "web designer",
@@ -49,7 +42,15 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     /* The font variables live on <html> so :root-level tokens can resolve them. */
-    <html lang="en" className={`${ppMori.variable} ${jetbrainsMono.variable}`}>
+    <html lang="en" className={ppMori.variable} suppressHydrationWarning>
+      <head>
+        {/* Before first paint: a visitor who already saw the welcome this session skips it (no white flash). */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `try{if(sessionStorage.getItem("welcome-seen"))document.documentElement.classList.add("welcome-seen")}catch(e){}`,
+          }}
+        />
+      </head>
       <body className="antialiased">
         <SmoothScroll />
         {children}

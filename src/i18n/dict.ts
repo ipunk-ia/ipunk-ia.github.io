@@ -5,8 +5,6 @@ export const LANGS: { code: Lang; label: string; short: string }[] = [
   { code: "id", label: "Bahasa Indonesia", short: "ID" },
 ];
 
-export type Discipline = { no: string; title: string; body: string; items: string[]; color: string };
-type Principle = { no: string; title: string; body: string };
 type Study = { no: string; label: string; body: string };
 
 type ProjectCopy = {
@@ -19,60 +17,15 @@ type ProjectCopy = {
 };
 
 export type Copy = {
-  nav: { links: { label: string; href: string }[]; cta: string; skip: string };
-  hero: { eyebrow: string; tagline: string; primary: string; secondary: string; available: string };
-  intro: {
-    eyebrow: string;
-    headline: [string, string, string, string, string];
-    body1: string;
-    body2: string;
-    stats: { value: string; label: string }[];
-    proofTitle: string;
-    proof: { label: string; items: string[] }[];
-  };
-  showcase: {
-    eyebrow: string;
-    line1: string;
-    line2a: string;
-    line2b: string;
-    filters: string[];
-    cards: { title: string; desc: string }[];
-    view: string;
-    prev: string;
-    next: string;
-  };
-  craft: { eyebrow: string; title1: string; title2: string; note: string };
-  disciplines: Discipline[];
-  digital: {
-    eyebrow: string;
-    title: string;
-    note: string;
-    focus: string;
-    status: string;
-    read: string;
-    visit: string;
-  };
-  graphic: { eyebrow: string; title: string; note: string; viewAll: string };
-  genAi: { eyebrow: string; title: string; note: string };
-  approach: { eyebrow: string; title1: string; title2: string; note: string };
-  principles: Principle[];
-  play: {
-    eyebrow: string;
-    title1: string;
-    title2: string;
-    note: string;
-    shake: string;
-    hint: string;
-  };
-  footer: {
-    eyebrow: string;
-    title1: string;
-    title2: string;
-    accent: string;
-    body: string;
-    services: string[];
-    send: string;
-  };
+  nav: { links: { label: string; href: string }[]; email: string; skip: string; menu: string; close: string };
+  welcome: string;
+  hero: { left: string; right: string; disciplines: [string, string]; city: string };
+  statement: { text: string; notes: [string, string][] };
+  work: { title: string; hint: string; open: string };
+  archive: { title: string };
+  services: { title: [string, string]; rows: { title: string; body: string }[] };
+  about: { label: string; text: string; body: string; caption: string; badge: string };
+  footer: { talk: string; note: string; sayHi: string; follow: string; rights: string };
   modal: {
     type: string;
     focus: string;
@@ -88,222 +41,67 @@ export type Copy = {
 const en: Copy = {
   nav: {
     links: [
+      { label: "Work", href: "#work" },
+      { label: "Services", href: "#services" },
       { label: "About", href: "#about" },
-      { label: "Work", href: "#showcase" },
-      { label: "Craft", href: "#craft" },
-      { label: "Visual", href: "#visual" },
-      { label: "Gen AI", href: "#gen-ai" },
-      { label: "Contact", href: "#contact" },
     ],
-    cta: "Get in touch",
+    email: "Email me",
     skip: "Skip to content",
+    menu: "Menu",
+    close: "Close",
   },
+  welcome: "Loading the work",
   hero: {
-    eyebrow: "UI/UX · Web · Graphic",
-    tagline:
-      "Designing interfaces that work and visuals that get remembered. Working across UI/UX, web, and graphic design out of Semarang, Indonesia.",
-    primary: "See selected work",
-    secondary: "Get in touch",
-    available: "Available for work",
+    left: "Interfaces that work.",
+    right: "Visuals that get remembered.",
+    disciplines: ["UI/UX and web design.", "Graphic and brand design."],
+    city: "Semarang, ID",
   },
-  intro: {
-    eyebrow: "About",
-    headline: [
-      "I'm a designer working across ",
-      "UI/UX",
-      "web",
-      "graphic",
-      "visual design",
+  statement: {
+    text: "A designer from Semarang working across interfaces, websites and graphics, looking for a studio that cares how things look and how they work.",
+    notes: [
+      ["UI/UX, web, graphic.", "AI-assisted, human-led."],
+      ["Two years designing.", "Open to full-time roles."],
     ],
-    body1:
-      "My work combines structured digital experiences with strong visual communication, from interfaces and websites to typography, branding, apparel graphics, and digital campaigns.",
-    body2:
-      "I use AI as part of my workflow to explore, iterate, and build faster, while keeping the creative direction and design decisions human-led.",
-    stats: [
-      { value: "2", label: "Years designing" },
-      { value: "4", label: "Craft areas" },
-      { value: "20+", label: "Pieces shipped" },
-      { value: "2", label: "Live client projects" },
-    ],
-    proofTitle: "Proof of work",
-    proof: [
+  },
+  work: {
+    title: "Work that started with a brief and ended up somewhere better.",
+    hint: "Keep scrolling to move the ribbon. Click a piece to open it.",
+    open: "Open case study",
+  },
+  archive: {
+    title: "Posters, identity boards and images, made to land in one glance.",
+  },
+  services: {
+    title: ["Three disciplines.", "One way of thinking."],
+    rows: [
       {
-        label: "UI/UX",
-        items: ["Live websites", "Responsive interfaces", "Product concepts", "User flows"],
+        title: "UI/UX design",
+        body: "Turning fuzzy product ideas into flows, screens, and systems people can actually move through.",
       },
-      { label: "Web", items: ["Live implementation", "Responsive websites", "Landing pages"] },
-      { label: "Graphic", items: ["Apparel graphics", "Typography", "Branding", "Print design"] },
       {
-        label: "AI",
-        items: ["AI-assisted workflow", "AI-assisted development", "Workflow automation"],
+        title: "Web design",
+        body: "Sites built to hold attention and move someone to the next step, not just to look nice in a screenshot.",
+      },
+      {
+        title: "Graphic design",
+        body: "Type, image, and composition pushed until the message lands before anyone reads a word.",
       },
     ],
   },
-  showcase: {
-    eyebrow: "Selected work",
-    line1: "A look at what",
-    line2a: "I've ",
-    line2b: "designed",
-    filters: ["All", "UI/UX", "Web", "Brand", "Poster"],
-    cards: [
-      { title: "Imagin Studio", desc: "A live studio site for a 3D product film team, built so the render itself is the proof." },
-      { title: "Wira Wiri", desc: "Travel app putting local guides, local food, and travel money into one flow." },
-      { title: "ORLYX Identity", desc: "A streetwear identity built on restraint: one mark, one line, nothing louder." },
-      { title: "Random Posters", desc: "Fourteen posters where one idea has to land while someone scrolls past." },
-      { title: "Wira Wiri Onboarding", desc: "Photography carries the mood, the interface stays quiet and out of the way." },
-      { title: "ORLYX Apparel", desc: "The mark taken from screen to garment, packaging, and a social feed system." },
-      { title: "Print Explorations", desc: "Halftone, duotone, and condensed type pushed until the photo becomes texture." },
-    ],
-    view: "View project",
-    prev: "Scroll showcase left",
-    next: "Scroll showcase right",
-  },
-  craft: {
-    eyebrow: "What I do",
-    title1: "Four things I do,",
-    title2: "one way of thinking.",
-    note: "The medium changes. The method does not: understand the goal, build the structure, then make it look inevitable.",
-  },
-  disciplines: [
-    {
-      no: "01",
-      title: "UI/UX Design",
-      body: "Turning fuzzy product ideas into flows, screens, and systems people can actually move through.",
-      items: [
-        "User flows",
-        "Information architecture",
-        "Wireframing",
-        "Prototyping",
-        "Interaction design",
-        "Usability thinking",
-        "Design systems",
-        "Responsive interfaces",
-      ],
-      color: "sky",
-    },
-    {
-      no: "02",
-      title: "Web Design",
-      body: "Sites built to hold attention and move someone to the next step, not just to look nice in a screenshot.",
-      items: [
-        "Landing pages",
-        "Business websites",
-        "Responsive web",
-        "Conversion-focused interfaces",
-        "Visual hierarchy",
-        "Web implementation",
-      ],
-      color: "grass",
-    },
-    {
-      no: "03",
-      title: "Graphic Design",
-      body: "Type, image, and composition pushed until the message lands before anyone reads a word.",
-      items: [
-        "Brand identity",
-        "Typography",
-        "Apparel graphics",
-        "Social media design",
-        "Marketing materials",
-        "Poster design",
-        "Print design",
-        "Photo editing",
-      ],
-      color: "bubble",
-    },
-    {
-      no: "04",
-      title: "AI-Augmented Workflow",
-      body: "AI as an accelerator for research, exploration, and build. Direction and final judgment stay human.",
-      items: [
-        "AI-assisted research",
-        "Ideation",
-        "Visual exploration",
-        "Content structuring",
-        "Asset generation",
-        "Prototyping",
-        "Development assistance",
-        "Workflow automation",
-      ],
-      color: "sun",
-    },
-  ],
-  digital: {
-    eyebrow: "Selected work / Digital",
-    title: "Product & web",
-    note: "Interfaces and sites where the job is measured in whether people get through, not in how the screenshot looks.",
-    focus: "Focus",
-    status: "Status",
-    read: "Read case study",
-    visit: "Visit live site",
-  },
-  graphic: {
-    eyebrow: "Selected work / Graphic & visual",
-    title: "Brand, print & poster",
-    note: "Different job from the screens above. Here the whole message has to land in one glance, with no second screen to explain it.",
-    viewAll: "View all posters",
-  },
-  genAi: {
-    eyebrow: "Selected work / Gen AI",
-    title: "Generated, then directed",
-    note: "Image generation used like a studio: the light, the product and the mood are decided first, then pushed until nothing gives it away.",
-  },
-  approach: {
-    eyebrow: "Design approach",
-    title1: "How I decide",
-    title2: "what stays.",
-    note: "Five rules I keep coming back to when a layout starts fighting itself. Hover a rule to see it at work.",
-  },
-  principles: [
-    {
-      no: "01",
-      title: "Clarity",
-      body: "Make the message understandable before making it beautiful.",
-    },
-    {
-      no: "02",
-      title: "Simplicity",
-      body: "Remove elements that don't contribute to the goal.",
-    },
-    {
-      no: "03",
-      title: "Visual hierarchy",
-      body: "Control attention through typography, scale, spacing, and composition.",
-    },
-    {
-      no: "04",
-      title: "Purpose",
-      body: "Every visual decision should support communication or business objectives.",
-    },
-    {
-      no: "05",
-      title: "AI-augmented",
-      body: "Use AI to accelerate exploration and production, while keeping creative direction human-led.",
-    },
-  ],
-  play: {
-    eyebrow: "Playground",
-    title1: "Grab one.",
-    title2: "Throw it around.",
-    note: "Every piece here is something I work with. They fall, collide, and stack for real.",
-    shake: "Shake",
-    hint: "Drag to play",
+  about: {
+    label: "About",
+    text: "I use AI to explore and build faster. The taste, the decisions and the final call stay mine.",
+    body: "My work combines structured digital experiences with strong visual communication, from interfaces and websites to typography, branding, apparel graphics, and digital campaigns.",
+    caption: "Ivan Ghazali, Semarang",
+    badge: "say hi",
   },
   footer: {
-    eyebrow: "Contact",
-    title1: "Let's build",
-    title2: "something ",
-    accent: "useful.",
-    body: "Available for UI/UX, web design, graphic design, visual identity, and selected freelance or remote opportunities.",
-    services: [
-      "UI/UX design",
-      "Web design",
-      "Graphic design",
-      "Visual identity",
-      "Freelance",
-      "Remote",
-    ],
-    send: "Send an email",
+    talk: "Let's talk",
+    note: "Need a designer who can take a brief from interface to poster? Start with an email.",
+    sayHi: "Say hi at",
+    follow: "Follow on",
+    rights: "All rights reserved",
   },
   modal: {
     type: "Type",
@@ -525,6 +323,36 @@ const en: Copy = {
         },
       ],
     },
+    "tshirt-design": {
+      title: "T-shirt Design",
+      kind: "Apparel graphics",
+      status: "Ongoing series",
+      focus: ["Apparel Graphics", "Illustration", "Display Lettering", "Composition"],
+      summary:
+        "Shirt graphics in two registers: loud front prints built like band merch, and the quiet typographic back prints of the ORLYX streetwear line. Either way the garment has to read from across a room.",
+      study: [
+        {
+          no: "01",
+          label: "Brief",
+          body: "A shirt graphic is seen in motion and at a distance, so each design has to hold as one silhouette before any detail registers.",
+        },
+        {
+          no: "02",
+          label: "Direction",
+          body: "The front prints pair a dense, rendered image with lettering cut to its theme: weathered metal block letters for Dope Squad, flame-edged blackletter for Damnation, a heavy black serif over an engraved angel and devil for Castigo, soft chrome for Chill, and an all-over print of a chrome car in blue flames for Burn It. The ORLYX tees go the other way: a small mark on the chest and one line of type across the back.",
+        },
+        {
+          no: "03",
+          label: "Exploration",
+          body: "Illustration and type are composed together, not stacked: the rifles cross behind the helmet, the lettering crowns the thorn-ringed crest, so nothing floats loose.",
+        },
+        {
+          no: "04",
+          label: "Final design",
+          body: "Standalone print artwork for the graphic pieces, and front and back mockups for the four ORLYX tees (real client). The series keeps growing as new designs are added.",
+        },
+      ],
+    },
     "poster-series": {
       title: "Random Poster Series",
       kind: "Graphic / visual exploration",
@@ -551,7 +379,7 @@ const en: Copy = {
         {
           no: "04",
           label: "Final design",
-          body: "Fourteen posters at print proportion, each carrying its own colour and subject while sharing the same typographic grid and credit system.",
+          body: "Eleven posters at print proportion, each carrying its own colour and subject while sharing the same typographic grid and credit system.",
         },
         {
           no: "05",
@@ -616,218 +444,67 @@ const en: Copy = {
 const id: Copy = {
   nav: {
     links: [
+      { label: "Karya", href: "#work" },
+      { label: "Layanan", href: "#services" },
       { label: "Tentang", href: "#about" },
-      { label: "Karya", href: "#showcase" },
-      { label: "Keahlian", href: "#craft" },
-      { label: "Visual", href: "#visual" },
-      { label: "Gen AI", href: "#gen-ai" },
-      { label: "Kontak", href: "#contact" },
     ],
-    cta: "Hubungi saya",
-    skip: "Lewati ke konten",
+    email: "Kirim email",
+    skip: "Lompat ke konten",
+    menu: "Menu",
+    close: "Tutup",
   },
+  welcome: "Memuat karya",
   hero: {
-    eyebrow: "UI/UX · Web · Grafis",
-    tagline:
-      "Merancang antarmuka yang benar-benar berfungsi dan visual yang membekas. Bekerja di UI/UX, web, dan desain grafis dari Semarang, Indonesia.",
-    primary: "Lihat karya pilihan",
-    secondary: "Hubungi saya",
-    available: "Terbuka untuk proyek",
+    left: "Antarmuka yang berfungsi.",
+    right: "Visual yang diingat.",
+    disciplines: ["Desain UI/UX dan web.", "Desain grafis dan brand."],
+    city: "Semarang, ID",
   },
-  intro: {
-    eyebrow: "Tentang",
-    headline: [
-      "Saya desainer yang bekerja di ",
-      "UI/UX",
-      "web",
-      "grafis",
-      "desain visual",
+  statement: {
+    text: "Desainer dari Semarang yang bekerja di antarmuka, website, dan grafis, mencari studio yang peduli pada tampilan sekaligus cara kerjanya.",
+    notes: [
+      ["UI/UX, web, grafis.", "Dibantu AI, dipimpin manusia."],
+      ["Dua tahun mendesain.", "Terbuka untuk posisi full-time."],
     ],
-    body1:
-      "Karya saya menggabungkan pengalaman digital yang terstruktur dengan komunikasi visual yang kuat, mulai dari antarmuka dan situs web sampai tipografi, branding, grafis apparel, dan kampanye digital.",
-    body2:
-      "Saya memakai AI sebagai bagian dari alur kerja untuk eksplorasi, iterasi, dan membangun lebih cepat, sementara arah kreatif dan keputusan desain tetap dipegang manusia.",
-    stats: [
-      { value: "2", label: "Tahun mendesain" },
-      { value: "4", label: "Bidang kerja" },
-      { value: "20+", label: "Karya rilis" },
-      { value: "2", label: "Proyek klien live" },
-    ],
-    proofTitle: "Bukti kerja",
-    proof: [
+  },
+  work: {
+    title: "Karya yang berawal dari brief dan berakhir di tempat yang lebih baik.",
+    hint: "Terus scroll untuk menggeser pita. Klik karya untuk membukanya.",
+    open: "Buka studi kasus",
+  },
+  archive: {
+    title: "Poster, papan identitas, dan gambar, dibuat untuk sampai dalam sekali lihat.",
+  },
+  services: {
+    title: ["Tiga disiplin.", "Satu cara berpikir."],
+    rows: [
       {
-        label: "UI/UX",
-        items: ["Situs live", "Antarmuka responsif", "Konsep produk", "User flow"],
+        title: "Desain UI/UX",
+        body: "Mengubah ide produk yang masih kabur menjadi alur, layar, dan sistem yang benar-benar bisa dilalui orang.",
       },
-      { label: "Web", items: ["Implementasi live", "Situs responsif", "Landing page"] },
-      { label: "Grafis", items: ["Grafis apparel", "Tipografi", "Branding", "Desain cetak"] },
       {
-        label: "AI",
-        items: ["Alur kerja berbantuan AI", "Development berbantuan AI", "Otomasi alur kerja"],
+        title: "Desain web",
+        body: "Situs yang dibuat untuk menahan perhatian dan mendorong ke langkah berikutnya, bukan sekadar cantik di screenshot.",
+      },
+      {
+        title: "Desain grafis",
+        body: "Tipografi, gambar, dan komposisi didorong sampai pesannya sampai sebelum orang membaca satu kata pun.",
       },
     ],
   },
-  showcase: {
-    eyebrow: "Karya pilihan",
-    line1: "Inilah yang",
-    line2a: "sudah saya ",
-    line2b: "rancang",
-    filters: ["Semua", "UI/UX", "Web", "Brand", "Poster"],
-    cards: [
-      { title: "Imagin Studio", desc: "Situs studio live untuk tim film produk 3D, dibuat supaya render-nya sendiri jadi buktinya." },
-      { title: "Wira Wiri", desc: "Aplikasi travel yang menyatukan pemandu lokal, kuliner lokal, dan uang perjalanan dalam satu alur." },
-      { title: "Identitas ORLYX", desc: "Identitas streetwear yang dibangun dari menahan diri: satu mark, satu garis, tanpa yang berisik." },
-      { title: "Poster Random", desc: "Empat belas poster yang satu idenya harus sampai saat orang sedang scroll melewatinya." },
-      { title: "Onboarding Wira Wiri", desc: "Fotografi yang membawa suasana, antarmukanya tetap tenang dan tidak mengganggu." },
-      { title: "Apparel ORLYX", desc: "Mark yang dibawa dari layar ke pakaian, kemasan, dan sistem feed media sosial." },
-      { title: "Eksplorasi Cetak", desc: "Halftone, duotone, dan tipografi condensed didorong sampai fotonya berubah jadi tekstur." },
-    ],
-    view: "Lihat proyek",
-    prev: "Geser showcase ke kiri",
-    next: "Geser showcase ke kanan",
-  },
-  craft: {
-    eyebrow: "Yang saya kerjakan",
-    title1: "Empat hal yang saya kerjakan,",
-    title2: "satu cara berpikir.",
-    note: "Medianya berubah, metodenya tidak: pahami tujuannya, bangun strukturnya, lalu buat hasilnya terasa memang sudah seharusnya begitu.",
-  },
-  disciplines: [
-    {
-      no: "01",
-      title: "Desain UI/UX",
-      body: "Mengubah ide produk yang masih kabur menjadi alur, layar, dan sistem yang benar-benar bisa dilalui orang.",
-      items: [
-        "User flow",
-        "Arsitektur informasi",
-        "Wireframe",
-        "Prototipe",
-        "Desain interaksi",
-        "Pertimbangan usability",
-        "Design system",
-        "Antarmuka responsif",
-      ],
-      color: "sky",
-    },
-    {
-      no: "02",
-      title: "Desain Web",
-      body: "Situs yang dibuat untuk menahan perhatian dan mendorong ke langkah berikutnya, bukan sekadar cantik di screenshot.",
-      items: [
-        "Landing page",
-        "Situs bisnis",
-        "Web responsif",
-        "Antarmuka fokus konversi",
-        "Hierarki visual",
-        "Implementasi web",
-      ],
-      color: "grass",
-    },
-    {
-      no: "03",
-      title: "Desain Grafis",
-      body: "Tipografi, gambar, dan komposisi didorong sampai pesannya sampai sebelum orang membaca satu kata pun.",
-      items: [
-        "Identitas brand",
-        "Tipografi",
-        "Grafis apparel",
-        "Desain media sosial",
-        "Materi pemasaran",
-        "Desain poster",
-        "Desain cetak",
-        "Olah foto",
-      ],
-      color: "bubble",
-    },
-    {
-      no: "04",
-      title: "Alur Kerja dengan AI",
-      body: "AI sebagai pemercepat riset, eksplorasi, dan produksi. Arah dan keputusan akhir tetap di tangan manusia.",
-      items: [
-        "Riset berbantuan AI",
-        "Ideasi",
-        "Eksplorasi visual",
-        "Penyusunan konten",
-        "Pembuatan aset",
-        "Prototipe",
-        "Bantuan development",
-        "Otomasi alur kerja",
-      ],
-      color: "sun",
-    },
-  ],
-  digital: {
-    eyebrow: "Karya pilihan / Digital",
-    title: "Produk & web",
-    note: "Antarmuka dan situs yang keberhasilannya diukur dari apakah orang berhasil sampai tujuan, bukan dari seberapa bagus screenshot-nya.",
-    focus: "Fokus",
-    status: "Status",
-    read: "Baca studi kasus",
-    visit: "Kunjungi situs",
-  },
-  graphic: {
-    eyebrow: "Karya pilihan / Grafis & visual",
-    title: "Brand, cetak & poster",
-    note: "Pekerjaan yang berbeda dari layar di atas. Di sini seluruh pesan harus sampai dalam satu pandangan, tanpa layar kedua untuk menjelaskan.",
-    viewAll: "Lihat semua poster",
-  },
-  genAi: {
-    eyebrow: "Karya pilihan / Gen AI",
-    title: "Digenerate, lalu diarahkan",
-    note: "Image generation dipakai seperti studio foto: cahaya, produk, dan suasana ditentukan dulu, lalu digarap sampai tidak ada yang terlihat palsu.",
-  },
-  approach: {
-    eyebrow: "Pendekatan desain",
-    title1: "Cara saya memutuskan",
-    title2: "apa yang bertahan.",
-    note: "Lima aturan yang selalu saya pakai saat sebuah layout mulai berantakan. Arahkan kursor ke tiap aturan untuk melihat contohnya.",
-  },
-  principles: [
-    { no: "01", title: "Kejelasan", body: "Buat pesannya dipahami dulu, baru dibuat indah." },
-    {
-      no: "02",
-      title: "Kesederhanaan",
-      body: "Buang elemen yang tidak berkontribusi pada tujuan.",
-    },
-    {
-      no: "03",
-      title: "Hierarki visual",
-      body: "Kendalikan perhatian lewat tipografi, skala, jarak, dan komposisi.",
-    },
-    {
-      no: "04",
-      title: "Tujuan",
-      body: "Setiap keputusan visual harus mendukung komunikasi atau tujuan bisnis.",
-    },
-    {
-      no: "05",
-      title: "Dibantu AI",
-      body: "Pakai AI untuk mempercepat eksplorasi dan produksi, arah kreatif tetap dipegang manusia.",
-    },
-  ],
-  play: {
-    eyebrow: "Playground",
-    title1: "Ambil satu.",
-    title2: "Lempar sesukamu.",
-    note: "Setiap objek di sini adalah hal yang saya kerjakan. Semuanya benar-benar jatuh, bertabrakan, dan menumpuk.",
-    shake: "Guncang",
-    hint: "Tarik untuk bermain",
+  about: {
+    label: "Tentang",
+    text: "Saya memakai AI untuk eksplorasi dan membangun lebih cepat. Selera, keputusan, dan kata akhir tetap milik saya.",
+    body: "Karya saya menggabungkan pengalaman digital yang terstruktur dengan komunikasi visual yang kuat, mulai dari antarmuka dan situs web sampai tipografi, branding, grafis apparel, dan kampanye digital.",
+    caption: "Ivan Ghazali, Semarang",
+    badge: "sapa",
   },
   footer: {
-    eyebrow: "Kontak",
-    title1: "Mari bangun",
-    title2: "sesuatu yang ",
-    accent: "berguna.",
-    body: "Terbuka untuk UI/UX, desain web, desain grafis, identitas visual, serta proyek freelance atau remote tertentu.",
-    services: [
-      "Desain UI/UX",
-      "Desain web",
-      "Desain grafis",
-      "Identitas visual",
-      "Freelance",
-      "Remote",
-    ],
-    send: "Kirim email",
+    talk: "Ayo ngobrol",
+    note: "Butuh desainer yang bisa membawa brief dari antarmuka sampai poster? Mulai dengan email.",
+    sayHi: "Sapa di",
+    follow: "Ikuti di",
+    rights: "Hak cipta dilindungi",
   },
   modal: {
     type: "Jenis",
@@ -1049,6 +726,36 @@ const id: Copy = {
         },
       ],
     },
+    "tshirt-design": {
+      title: "Desain Kaos",
+      kind: "Grafis apparel",
+      status: "Seri berjalan",
+      focus: ["Grafis Apparel", "Ilustrasi", "Lettering Display", "Komposisi"],
+      summary:
+        "Grafis kaos dalam dua karakter: sablon depan yang lantang seperti merch band, dan sablon punggung tipografis yang tenang untuk lini streetwear ORLYX. Apa pun karakternya, kaos harus terbaca dari seberang ruangan.",
+      study: [
+        {
+          no: "01",
+          label: "Brief",
+          body: "Grafis kaos dilihat saat bergerak dan dari jauh, jadi tiap desain harus kuat sebagai satu siluet sebelum detail apa pun tertangkap.",
+        },
+        {
+          no: "02",
+          label: "Arah",
+          body: "Sablon depan memasangkan gambar yang padat dan dirender penuh dengan lettering yang dipotong sesuai temanya: huruf blok logam yang aus untuk Dope Squad, blackletter bertepi api untuk Damnation, serif hitam tebal di atas malaikat dan iblis bergaya gravir untuk Castigo, chrome lembut untuk Chill, dan sablon menyeluruh mobil chrome dalam api biru untuk Burn It. Kaos ORLYX justru sebaliknya: logo kecil di dada dan satu baris tipografi di punggung.",
+        },
+        {
+          no: "03",
+          label: "Eksplorasi",
+          body: "Ilustrasi dan tipografi disusun bersama, bukan ditumpuk: senapan menyilang di belakang helm, lettering memahkotai lambang berduri, sehingga tidak ada yang melayang lepas.",
+        },
+        {
+          no: "04",
+          label: "Desain akhir",
+          body: "Artwork siap cetak untuk karya grafis, serta mockup depan dan belakang untuk empat kaos ORLYX (klien nyata). Seri ini terus bertambah seiring desain baru masuk.",
+        },
+      ],
+    },
     "poster-series": {
       title: "Seri Poster Random",
       kind: "Eksplorasi grafis / visual",
@@ -1075,7 +782,7 @@ const id: Copy = {
         {
           no: "04",
           label: "Desain akhir",
-          body: "Empat belas poster dengan proporsi cetak, masing-masing membawa warna dan subjeknya sendiri tapi berbagi grid tipografi dan sistem kredit yang sama.",
+          body: "Sebelas poster dengan proporsi cetak, masing-masing membawa warna dan subjeknya sendiri tapi berbagi grid tipografi dan sistem kredit yang sama.",
         },
         {
           no: "05",

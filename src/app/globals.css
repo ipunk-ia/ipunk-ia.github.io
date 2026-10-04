@@ -1,176 +1,118 @@
 @import "tailwindcss";
 
 @theme {
-  /* Surfaces: white leads, text is a deep tone of the same blue, never black */
+  /* Black and white only: every colour on the page comes from the work itself. */
   --color-paper: #ffffff;
-  --color-paper-2: #f3f7ff;
-  --color-ink: #16233d;
-  --color-ink-soft: #22334f;
-  --color-muted: #5d6b86;
-  --color-line: #dde6f6;
-  --color-deep: #101c34;
+  --color-paper-2: #f4f4f4;
+  --color-ink: #0a0a0a;
+  --color-deep: #000000;
+  --color-muted: #6b6b6b; /* 5.3:1 on white */
+  --color-dim: #9a9a9a; /* 7.4:1 on black */
+  --color-line: #e5e5e5;
+  --color-line-dark: #262626;
 
-  /* One bright hue, five steps of light to dark */
-  --color-bubble: #e2ecff;
-  --color-sun: #c3d8ff;
-  --color-sky: #9dbcff;
-  --color-grass: #6f9bff;
-  --color-flame: #3a6ae0;
-
-  /* Type */
   --font-display: var(--font-mori), ui-sans-serif, system-ui, sans-serif;
-  --font-mono: var(--font-jbmono), ui-monospace, SFMono-Regular, monospace;
+  --font-mono: var(--font-mori), ui-sans-serif, system-ui, sans-serif;
+
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 @layer base {
-  /*
-   * Declared here as well as in @theme: Tailwind drops theme variables that no
-   * generated utility references, and these are consumed through raw var() calls.
-   */
+  /* Declared here as well: Tailwind drops theme variables no utility references. */
   :root {
     --font-display: var(--font-mori), ui-sans-serif, system-ui, sans-serif;
-    --font-mono: var(--font-jbmono), ui-monospace, SFMono-Regular, monospace;
+    --frame-w: clamp(15rem, 22vw, 22rem);
   }
 
-  html {
-    scroll-behavior: smooth;
-  }
-
-  /* Anchored sections stop below the fixed nav instead of under it. */
   [id] {
-    scroll-margin-top: 6rem;
+    scroll-margin-top: 5rem;
   }
 
   body {
-    background-color: var(--color-paper);
+    background-color: var(--color-deep);
     color: var(--color-ink);
     font-family: var(--font-display);
+    font-weight: 400;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
-    overflow-x: hidden;
+    overflow-x: clip;
   }
 
   ::selection {
-    background: var(--color-grass);
+    background: var(--color-ink);
+    color: var(--color-paper);
+  }
+
+  .on-dark ::selection {
+    background: var(--color-paper);
     color: var(--color-ink);
   }
 
   :focus-visible {
-    outline: 2px solid var(--color-ink);
-    outline-offset: 3px;
-    border-radius: 4px;
+    outline: 2px solid currentColor;
+    outline-offset: 4px;
+    border-radius: 2px;
+  }
+
+  html {
+    scrollbar-color: var(--color-muted) var(--color-deep);
+  }
+
+  /* Lenis runs with autoToggle, so this also pauses smooth scroll during the welcome. */
+  html.is-loading {
+    overflow: hidden;
   }
 }
 
 @layer components {
-  /* ---------------- Layout helpers ---------------- */
-
   .shell {
     width: 100%;
-    max-width: 88rem;
-    margin-inline: auto;
-    padding-inline: 1.25rem;
+    padding-inline: 1rem;
   }
 
   @media (min-width: 768px) {
     .shell {
-      padding-inline: 2.5rem;
+      padding-inline: 1.75rem;
     }
   }
 
-  /* ---------------- Eyebrow label ---------------- */
-
+  /* Small label, used for metadata only (never above a heading). */
   .eyebrow {
-    font-family: var(--font-mono);
-    font-size: 0.6875rem;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
+    font-size: 0.8125rem;
     color: var(--color-muted);
   }
 
-  /* ---------------- Display type ---------------- */
-
   .display {
-    font-weight: 600;
-    letter-spacing: -0.045em;
-    line-height: 0.9;
+    font-weight: 400;
+    letter-spacing: -0.035em;
+    line-height: 1.02;
   }
 
-  /* ---------------- Marquee ---------------- */
-
-  .marquee {
-    overflow: hidden;
-    -webkit-mask-image: linear-gradient(
-      to right,
-      transparent,
-      #000 6%,
-      #000 94%,
-      transparent
-    );
-    mask-image: linear-gradient(to right, transparent, #000 6%, #000 94%, transparent);
+  /* Plain text link that underlines on hover, the only link style on the page. */
+  .link {
+    text-decoration-line: underline;
+    text-decoration-color: transparent;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.2em;
+    transition: text-decoration-color 0.25s ease;
   }
 
-  .marquee__track {
-    display: flex;
-    width: max-content;
-    will-change: transform;
-    animation: marquee-x var(--marquee-duration, 70s) linear infinite;
+  .link:hover,
+  .link:focus-visible {
+    text-decoration-color: currentColor;
   }
-
-  .marquee--reverse .marquee__track {
-    animation-direction: reverse;
-  }
-
-  .marquee:hover .marquee__track,
-  .marquee:focus-within .marquee__track {
-    animation-play-state: paused;
-  }
-
-  @keyframes marquee-x {
-    from {
-      transform: translate3d(0, 0, 0);
-    }
-    to {
-      transform: translate3d(-50%, 0, 0);
-    }
-  }
-
-  /* ---------------- Scroll reveal ---------------- */
-
-  .reveal {
-    opacity: 0;
-    transform: translateY(22px);
-    transition:
-      opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
-      transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
-    transition-delay: var(--reveal-delay, 0ms);
-  }
-
-  .reveal.is-in {
-    opacity: 1;
-    transform: none;
-  }
-
-  /* ---------------- Buttons ---------------- */
 
   .btn {
     display: inline-flex;
     align-items: center;
-    gap: 0.625rem;
-    border-radius: 999px;
-    padding: 0.875rem 1.5rem;
+    gap: 0.5rem;
+    padding: 0.7rem 1.1rem;
+    border-radius: 4px;
     font-size: 0.9375rem;
-    font-weight: 500;
-    line-height: 1;
+    white-space: nowrap;
     transition:
-      transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
-      background-color 0.35s ease,
-      color 0.35s ease,
-      border-color 0.35s ease;
-  }
-
-  .btn:hover {
-    transform: translateY(-2px);
+      background-color 0.25s ease,
+      color 0.25s ease;
   }
 
   .btn--solid {
@@ -179,154 +121,306 @@
   }
 
   .btn--solid:hover {
-    background: var(--color-grass);
-    color: var(--color-ink);
+    background: #2b2b2b;
   }
 
-  .btn--light {
-    background: var(--color-paper);
-    color: var(--color-ink);
+  /* ---------------- Scroll reveal: lines rise out of a mask ---------------- */
+
+  .rise {
+    display: block;
+    overflow: hidden;
   }
 
-  .btn--light:hover {
-    background: var(--color-grass);
+  .rise > span {
+    display: block;
+    transform: translateY(105%);
+    transition: transform 1.1s var(--ease-out-expo);
+    transition-delay: var(--rise-delay, 0ms);
   }
 
-  .btn--ghost {
-    border: 1px solid color-mix(in srgb, var(--color-paper) 30%, transparent);
-    color: var(--color-paper);
+  .is-in .rise > span {
+    transform: none;
   }
 
-  .btn--ghost:hover {
-    background: color-mix(in srgb, var(--color-paper) 12%, transparent);
+  .fade-in {
+    opacity: 0;
+    transform: translateY(1.5rem);
+    transition:
+      opacity 0.9s var(--ease-out-expo),
+      transform 0.9s var(--ease-out-expo);
+    transition-delay: var(--rise-delay, 0ms);
   }
 
-  .btn--outline {
-    border: 1px solid var(--color-line);
-    color: var(--color-ink);
+  .is-in .fade-in {
+    opacity: 1;
+    transform: none;
   }
 
-  .btn--outline:hover {
-    border-color: var(--color-ink);
+  /* ---------------- Welcome (set 3 frame-stack preloader) ---------------- */
+
+  .preloader {
+    position: fixed;
+    inset: 0;
+    z-index: 90;
+    pointer-events: none;
   }
 
-  /* ---------------- Chip ---------------- */
-
-  .chip {
-    display: inline-flex;
-    align-items: center;
-    border-radius: 999px;
-    border: 1px solid var(--color-line);
-    padding: 0.4rem 0.85rem;
-    font-family: var(--font-mono);
-    font-size: 0.6875rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--color-muted);
-    white-space: nowrap;
-  }
-
-  .chip--dark {
-    border-color: color-mix(in srgb, var(--color-paper) 22%, transparent);
-    color: color-mix(in srgb, var(--color-paper) 72%, transparent);
-  }
-
-  /* ---------------- Paper grain ---------------- */
-
-  .grain::after {
-    content: "";
+  /* White curtain over the black hero: lifting it is the reveal. */
+  .preloader__bg {
     position: absolute;
     inset: 0;
-    pointer-events: none;
-    opacity: 0.5;
-    mix-blend-mode: multiply;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.32'/%3E%3C/svg%3E");
+    background: var(--color-paper);
   }
 
-  /* ---------------- Drifting colour fields ---------------- */
-
-  .blob {
+  .preloader__stage {
     position: absolute;
-    pointer-events: none;
-    will-change: transform;
-  }
-
-  .blob--a {
-    animation: drift-a 26s ease-in-out infinite;
-  }
-
-  .blob--b {
-    animation: drift-b 34s ease-in-out infinite;
-  }
-
-  @keyframes drift-a {
-    0%,
-    100% {
-      transform: translate3d(0, 0, 0) rotate(0deg) scale(1);
-    }
-    33% {
-      transform: translate3d(9vw, -3rem, 0) rotate(24deg) scale(1.08);
-    }
-    66% {
-      transform: translate3d(3vw, 3.5rem, 0) rotate(-16deg) scale(0.95);
-    }
-  }
-
-  @keyframes drift-b {
-    0%,
-    100% {
-      transform: translate3d(0, 0, 0) rotate(0deg) scale(1);
-    }
-    40% {
-      transform: translate3d(-11vw, 2.5rem, 0) rotate(-20deg) scale(1.06);
-    }
-    75% {
-      transform: translate3d(-4vw, -3rem, 0) rotate(12deg) scale(0.96);
-    }
-  }
-
-  /* Type that inverts wherever a drifting shape passes under it */
-  .blend-title {
-    color: #fff;
-    mix-blend-mode: difference;
-  }
-
-  /* ---------------- Physics playground ---------------- */
-
-  .play-body {
-    position: absolute;
-    top: 0;
-    left: 0;
+    inset: 0;
     display: grid;
     place-items: center;
-    will-change: transform;
-    cursor: grab;
-    user-select: none;
-    -webkit-user-select: none;
-    touch-action: none;
   }
 
-  .play-body:active {
-    cursor: grabbing;
+  /* Same box as .hero-visual: the last frame lands on it, so the sizes must match. */
+  .preloader__frames,
+  .hero-visual {
+    width: var(--frame-w);
+    aspect-ratio: 4 / 5;
+  }
+
+  .preloader__frames {
+    position: relative;
+  }
+
+  .preloader__frame {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    clip-path: inset(50% 50% 50% 50%);
+  }
+
+  .preloader__frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .preloader__counter {
+    position: absolute;
+    bottom: 1.25rem;
+    left: 50%;
+    translate: -50% 0;
+    color: var(--color-ink);
+    font-size: clamp(3rem, 7vw, 6rem);
+    line-height: 1;
+    letter-spacing: -0.04em;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .preloader__mask {
+    overflow: hidden;
+    height: 1em;
+  }
+
+  .preloader__digits {
+    display: flex;
+  }
+
+  .preloader__digit {
+    height: 1em;
+    overflow: hidden;
+  }
+
+  .preloader__digit-inner span {
+    display: block;
+    height: 1em;
+  }
+
+  /* ---------------- Hero deck + wordmark ---------------- */
+
+  /* Server render places every card on its slot (see slotUnits); GSAP takes over after hydration. */
+  .deck-card {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: var(--frame-w);
+    aspect-ratio: 4 / 5;
+    overflow: hidden;
+  }
+
+  .hero-visual[data-visual="hidden"] {
+    visibility: hidden;
+  }
+
+  /* Second visit this session: no welcome, the deck is complete from the first paint. */
+  html.welcome-seen .preloader {
+    display: none;
+  }
+
+  html.welcome-seen .hero-visual[data-visual="hidden"] {
+    visibility: visible;
+  }
+
+  /*
+   * Posters are printed with a thin white edge and a band at the foot. Anchoring the crop to the top
+   * drops the band; the separate `scale` property trims the edge and composes with GSAP's transform.
+   */
+  .deck-card img[src*="/posters/"],
+  .preloader__frame img[src*="/posters/"] {
+    object-position: 50% 0%;
+    scale: 1.05;
+  }
+
+  /* Small and centred at rest; the loop scales it up to the full width and back. */
+  .wordmark {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    z-index: 20;
+    translate: -50% -50%;
+    color: var(--color-paper);
+    mix-blend-mode: difference;
+    font-size: clamp(1.25rem, 1.8vw, 1.75rem);
+    line-height: 1;
+    letter-spacing: -0.045em;
+    white-space: nowrap;
+    pointer-events: none;
+  }
+
+  .wordmark__line {
+    display: block;
+    overflow: hidden;
+    padding-bottom: 0.14em;
+  }
+
+  .wordmark__char {
+    display: inline-block;
+    white-space: pre;
+  }
+
+  /* ---------------- Archive: scattered 12-column grid ---------------- */
+
+  /* Spans live here, not in utilities: a utility would outrank the desktop placement below. */
+  .archive-tile {
+    grid-column: span 1;
+  }
+
+  .archive-tile[data-wide] {
+    grid-column: span 2;
+  }
+
+  @media (min-width: 768px) {
+    .archive-tile,
+    .archive-tile[data-wide] {
+      grid-column: var(--col);
+      margin-top: var(--drop);
+    }
+  }
+
+  /* ---------------- About badge: trails the cursor on desktop ---------------- */
+
+  @media (min-width: 768px) and (hover: hover) {
+    .about-badge {
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .about-badge[data-following="true"] {
+      opacity: 1;
+    }
+  }
+
+  /* Ribbon open cue: trails the cursor over a card (mouse only, the hint line covers touch). */
+  .ribbon-badge {
+    opacity: 0;
+    transition: opacity 0.25s ease;
+  }
+
+  .ribbon-badge[data-shown="true"] {
+    opacity: 1;
+  }
+
+  /* ---------------- Services row ---------------- */
+
+  .service-row {
+    transition:
+      background-color 0.45s var(--ease-out-expo),
+      color 0.45s var(--ease-out-expo);
+  }
+
+  .service-row p {
+    transition: color 0.45s var(--ease-out-expo);
+  }
+
+  @media (hover: hover) {
+    .service-row:hover {
+      background: var(--color-ink);
+      color: var(--color-paper);
+    }
+
+    .service-row:hover p {
+      color: var(--color-dim);
+    }
+  }
+
+  /* ---------------- Rolling letters (footer "Let's talk") ---------------- */
+
+  .roll {
+    display: inline-flex;
+    overflow: hidden;
+    line-height: 1.05;
+  }
+
+  .roll__char {
+    display: inline-block;
+    white-space: pre;
+    text-shadow: 0 1.05em currentColor;
+    transition: transform 0.7s var(--ease-out-expo);
+    transition-delay: calc(var(--i) * 22ms);
+  }
+
+  .roll-trigger:hover .roll__char,
+  .roll-trigger:focus-visible .roll__char {
+    transform: translateY(-1.05em);
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
+  .preloader {
+    display: none;
   }
 
-  .marquee__track {
-    animation: none;
-  }
-
-  .reveal {
-    opacity: 1;
-    transform: none;
+  .rise > span,
+  .fade-in {
     transition: none;
   }
 
-  .btn:hover {
+  .rise > span,
+  .fade-in {
     transform: none;
+    opacity: 1;
+  }
+
+  .hero-visual[data-visual="hidden"] {
+    visibility: visible;
+  }
+
+  .roll__char {
+    transition: none;
+  }
+}
+
+/* Without JavaScript nothing would ever run the welcome or the reveals. */
+@media (scripting: none) {
+  .preloader {
+    display: none;
+  }
+
+  .rise > span,
+  .fade-in {
+    transform: none;
+    opacity: 1;
+  }
+
+  .hero-visual[data-visual="hidden"] {
+    visibility: visible;
   }
 }

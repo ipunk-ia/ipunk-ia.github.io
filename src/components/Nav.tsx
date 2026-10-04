@@ -1,24 +1,39 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Image from "next/image";
 import { site } from "@/data/site";
 import { useCopy, useLang } from "@/i18n/LanguageProvider";
 
-const SCROLL_TRIGGER = 40;
+/** Probe point just under the bar, in px from the top of the viewport. */
+const NAV_PROBE_Y = 70;
 
+/** Plain text bar on a band that swaps black/white with the section beneath it. */
 export function Nav() {
   const copy = useCopy();
   const { lang, setLang, options } = useLang();
-  const LINKS = copy.nav.links;
-  const [isScrolled, setIsScrolled] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
+  const [isDark, setIsDark] = useState(true);
 
+  // The band takes the colour of whatever section sits under it, so text never runs beneath the links.
   useEffect(() => {
-    const onScroll = () => setIsScrolled(window.scrollY > SCROLL_TRIGGER);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+    let frame = 0;
+    const probe = () => {
+      cancelAnimationFrame(frame);
+      frame = requestAnimationFrame(() => {
+        const under = document
+          .elementsFromPoint(window.innerWidth / 2, NAV_PROBE_Y)
+          .find((el) => !el.closest("header"));
+        setIsDark(!!under?.closest(".on-dark"));
+      });
+    };
+    probe();
+    window.addEventListener("scroll", probe, { passive: true });
+    window.addEventListener("resize", probe);
+    return () => {
+      cancelAnimationFrame(frame);
+      window.removeEventListener("scroll", probe);
+      window.removeEventListener("resize", probe);
+    };
   }, []);
 
   useEffect(() => {
@@ -30,171 +45,106 @@ export function Nav() {
     return () => window.removeEventListener("keydown", onKey);
   }, [isOpen]);
 
+  const langSwitch = (
+    <div role="group" aria-label="Language" className="flex items-center gap-2">
+      {options.map((option) => (
+        <button
+          key={option.code}
+          type="button"
+          onClick={() => setLang(option.code)}
+          aria-pressed={lang === option.code}
+          title={option.label}
+          className={`link ${lang === option.code ? "decoration-current" : "opacity-60 hover:opacity-100"}`}
+        >
+          {option.short}
+        </button>
+      ))}
+    </div>
+  );
+
   return (
     <>
       <a
         href="#main"
-        className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-full focus:bg-ink focus:px-5 focus:py-3 focus:text-sm focus:text-paper"
+        className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:bg-paper focus:px-4 focus:py-2 focus:text-ink"
       >
         {copy.nav.skip}
       </a>
 
-      <header className="fixed inset-x-0 top-0 z-50">
-        <div className="shell">
-          <nav
-            aria-label="Primary"
-            className={`mt-3 flex items-center justify-between rounded-full py-2 pl-4 pr-2 transition-all duration-500 md:mt-4 md:pl-6 ${
-              isScrolled
-                ? "bg-paper/85 shadow-[0_1px_30px_rgba(0,0,0,0.08)] backdrop-blur-xl"
-                : "bg-transparent"
-            }`}
-          >
-            <a
-              href="#top"
-              className={`flex shrink-0 items-center gap-2.5 whitespace-nowrap text-sm font-medium tracking-tight transition-colors ${
-                isScrolled ? "text-ink" : "text-paper"
-              }`}
-            >
-              <span
-                className={`relative block h-8 w-8 shrink-0 overflow-hidden rounded-full ring-1 transition-colors ${
-                  isScrolled ? "ring-line" : "ring-paper/30"
-                }`}
-              >
-                <Image
-                  src="/work/me/portrait.jpg"
-                  alt=""
-                  fill
-                  sizes="32px"
-                  className="scale-[1.6] object-cover object-[62%_28%]"
-                />
-              </span>
-              {site.name}
-            </a>
+      <header
+        className={`fixed inset-x-0 top-0 z-50 transition-colors duration-300 ${
+          isDark ? "on-dark bg-deep text-paper" : "bg-paper text-ink"
+        }`}
+      >
+        <nav aria-label="Primary" className="shell grid grid-cols-[1fr_auto] items-center py-5 text-[1rem] md:grid-cols-3">
+          <a href="#top" className="text-[1.375rem] leading-none tracking-[-0.045em]">
+            ivan ghazali
+          </a>
 
-            <div className="hidden items-center gap-1 lg:flex">
-              {LINKS.map((link) => (
-                <a
-                  key={link.href}
-                  href={link.href}
-                  className={`rounded-full px-4 py-2 text-sm transition-colors ${
-                    isScrolled
-                      ? "text-muted hover:bg-ink hover:text-paper"
-                      : "text-paper/70 hover:bg-paper/15 hover:text-paper"
-                  }`}
-                >
+          <ul className="hidden justify-center gap-4 md:flex">
+            {copy.nav.links.map((link) => (
+              <li key={link.href}>
+                <a href={link.href} className="link">
                   {link.label}
                 </a>
-              ))}
-              {/* Language switch */}
-              <div
-                role="group"
-                aria-label="Language"
-                className={`ml-2 flex items-center rounded-full p-0.5 ${
-                  isScrolled ? "bg-paper-2" : "bg-paper/15"
-                }`}
-              >
-                {options.map((option) => (
-                  <button
-                    key={option.code}
-                    type="button"
-                    onClick={() => setLang(option.code)}
-                    aria-pressed={lang === option.code}
-                    title={option.label}
-                    className={`rounded-full px-3 py-1.5 font-mono text-[11px] tracking-[0.1em] transition-colors ${
-                      lang === option.code
-                        ? "bg-ink text-paper"
-                        : isScrolled
-                          ? "text-muted hover:text-ink"
-                          : "text-paper/70 hover:text-paper"
-                    }`}
-                  >
-                    {option.short}
-                  </button>
-                ))}
-              </div>
+              </li>
+            ))}
+          </ul>
 
-              <a
-                href="#contact"
-                className={`btn ml-2 whitespace-nowrap py-2.5 text-sm ${isScrolled ? "btn--solid" : "btn--light"}`}
-              >
-                {copy.nav.cta}
-              </a>
-            </div>
+          <div className="hidden items-center justify-end gap-6 md:flex">
+            {langSwitch}
+            <a href={`mailto:${site.email}`} className="link">
+              {copy.nav.email}
+            </a>
+          </div>
 
-            <button
-              type="button"
-              onClick={() => setIsOpen((v) => !v)}
-              aria-expanded={isOpen}
-              aria-controls="mobile-menu"
-              aria-label={isOpen ? "Close menu" : "Open menu"}
-              className={`grid h-10 w-10 shrink-0 place-items-center rounded-full transition-colors lg:hidden ${
-                isScrolled ? "bg-ink text-paper" : "bg-paper text-ink"
-              }`}
-            >
-              <span aria-hidden className="relative block h-3 w-4">
-                <span
-                  className={`absolute left-0 block h-[1.5px] w-4 bg-current transition-all duration-300 ${
-                    isOpen ? "top-1.5 rotate-45" : "top-0"
-                  }`}
-                />
-                <span
-                  className={`absolute left-0 block h-[1.5px] w-4 bg-current transition-all duration-300 ${
-                    isOpen ? "top-1.5 -rotate-45" : "top-3"
-                  }`}
-                />
-              </span>
-            </button>
-          </nav>
-        </div>
+          <button
+            type="button"
+            onClick={() => setIsOpen(true)}
+            aria-expanded={isOpen}
+            aria-controls="mobile-menu"
+            className="link md:hidden"
+          >
+            {copy.nav.menu}
+          </button>
+        </nav>
       </header>
 
       <div
         id="mobile-menu"
         hidden={!isOpen}
         data-lenis-prevent
-        className="fixed inset-0 z-40 overflow-y-auto bg-ink px-6 pb-10 pt-24 text-paper lg:hidden"
+        className="on-dark fixed inset-0 z-[60] overflow-y-auto bg-deep text-paper md:hidden"
       >
-        <div
-          role="group"
-          aria-label="Language"
-          className="mb-6 flex items-center gap-1 rounded-full bg-paper/10 p-1"
-        >
-          {options.map((option) => (
-            <button
-              key={option.code}
-              type="button"
-              onClick={() => setLang(option.code)}
-              aria-pressed={lang === option.code}
-              className={`flex-1 rounded-full px-4 py-2.5 font-mono text-xs tracking-[0.1em] transition-colors ${
-                lang === option.code ? "bg-paper text-ink" : "text-paper/70"
-              }`}
-            >
-              {option.label}
+        <div className="shell flex min-h-full flex-col pb-8">
+          <div className="flex items-center justify-between py-5">
+            <span className="text-[1.375rem] leading-none tracking-[-0.045em]">ivan ghazali</span>
+            <button type="button" onClick={() => setIsOpen(false)} className="link">
+              {copy.nav.close}
             </button>
-          ))}
-        </div>
+          </div>
 
-        <ul className="flex flex-col gap-1">
-          {LINKS.map((link, i) => (
-            <li key={link.href}>
-              <a
-                href={link.href}
-                onClick={() => setIsOpen(false)}
-                className="display block border-b border-paper/10 py-5 text-4xl text-paper"
-              >
-                <span className="eyebrow mr-4 text-paper/40">0{i + 1}</span>
-                {link.label}
-              </a>
-            </li>
-          ))}
-        </ul>
-        <a
-          href={`mailto:${site.email}`}
-          className="btn btn--light mt-10 w-full justify-center"
-          onClick={() => setIsOpen(false)}
-        >
-          {site.email}
-        </a>
+          <ul className="mt-16 flex flex-col gap-2">
+            {copy.nav.links.map((link) => (
+              <li key={link.href}>
+                <a
+                  href={link.href}
+                  onClick={() => setIsOpen(false)}
+                  className="block text-[3rem] leading-[1.1] tracking-[-0.035em]"
+                >
+                  {link.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+
+          <div className="mt-auto flex items-end justify-between gap-6 pt-16 text-[1rem]">
+            <a href={`mailto:${site.email}`} className="link" onClick={() => setIsOpen(false)}>
+              {site.email}
+            </a>
+            {langSwitch}
+          </div>
+        </div>
       </div>
     </>
   );

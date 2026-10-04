@@ -6,7 +6,7 @@
  */
 
 /** Must match WIDTHS in scripts/gen-images.sh. */
-const AVAILABLE_WIDTHS = [160, 320, 640, 768, 1080, 1600] as const;
+const AVAILABLE_WIDTHS = [160, 320, 640, 768, 1080, 1600, 2400] as const;
 
 type LoaderArgs = { src: string; width: number };
 

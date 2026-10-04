@@ -4,20 +4,22 @@ import { useEffect, useRef, useState, type ElementType, type ReactNode } from "r
 
 type RevealProps = {
   children: ReactNode;
-  /** Delay in milliseconds before the element animates in. */
-  delay?: number;
   className?: string;
   as?: ElementType;
+  id?: string;
 };
 
-const OBSERVER_THRESHOLD = 0.12;
-const OBSERVER_MARGIN = "0px 0px -8% 0px";
+/*
+ * Motion Method rule 4: a ratio threshold fails on blocks taller than the viewport (the archive on a
+ * phone never shows 15% of itself at once). Trigger on the top edge crossing 85% of the viewport instead.
+ */
+const OBSERVER_MARGIN = "0px 0px -15% 0px";
 
 /**
- * Fades and lifts its children into view once, the first time they are scrolled to.
- * Falls back to visible immediately when IntersectionObserver is unavailable.
+ * Adds `is-in` the first time the block scrolls into view. The motion itself lives in CSS
+ * (`.rise`, `.fade-in`), so content is never hidden from no-JS or reduced-motion visitors.
  */
-export function Reveal({ children, delay = 0, className = "", as }: RevealProps) {
+export function Reveal({ children, className = "", as, id }: RevealProps) {
   const Tag: ElementType = as ?? "div";
   const ref = useRef<HTMLElement>(null);
   const [isIn, setIsIn] = useState(false);
@@ -26,21 +28,13 @@ export function Reveal({ children, delay = 0, className = "", as }: RevealProps)
     const node = ref.current;
     if (!node) return;
 
-    if (typeof IntersectionObserver === "undefined") {
-      setIsIn(true);
-      return;
-    }
-
     const observer = new IntersectionObserver(
-      (entries) => {
-        for (const entry of entries) {
-          if (entry.isIntersecting) {
-            setIsIn(true);
-            observer.disconnect();
-          }
-        }
+      ([entry]) => {
+        if (!entry.isIntersecting) return;
+        setIsIn(true);
+        observer.disconnect();
       },
-      { threshold: OBSERVER_THRESHOLD, rootMargin: OBSERVER_MARGIN },
+      { threshold: 0, rootMargin: OBSERVER_MARGIN },
     );
 
     observer.observe(node);
@@ -48,12 +42,17 @@ export function Reveal({ children, delay = 0, className = "", as }: RevealProps)
   }, []);
 
   return (
-    <Tag
-      ref={ref}
-      className={`reveal ${isIn ? "is-in" : ""} ${className}`}
-      style={{ "--reveal-delay": `${delay}ms` } as React.CSSProperties}
-    >
+    <Tag ref={ref} id={id} className={`${isIn ? "is-in" : ""} ${className}`}>
       {children}
     </Tag>
+  );
+}
+
+/** One masked line that rises into place when its Reveal parent comes into view. */
+export function Rise({ children, delay = 0 }: { children: ReactNode; delay?: number }) {
+  return (
+    <span className="rise">
+      <span style={{ "--rise-delay": `${delay}ms` } as React.CSSProperties}>{children}</span>
+    </span>
   );
 }

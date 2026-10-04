@@ -1,16 +1,13 @@
 import { Nav } from "@/components/Nav";
 import { Hero } from "@/components/Hero";
-import { Intro } from "@/components/Intro";
-import { Showcase } from "@/components/Showcase";
-import { Disciplines } from "@/components/Disciplines";
-import { DigitalWork } from "@/components/work/DigitalWork";
-import { GraphicWork } from "@/components/work/GraphicWork";
-import { GenAiWork } from "@/components/work/GenAiWork";
+import { Statement } from "@/components/Statement";
+import { WorkRibbon } from "@/components/WorkRibbon";
+import { Archive } from "@/components/Archive";
+import { Services } from "@/components/Services";
+import { About } from "@/components/About";
+import { Footer } from "@/components/Footer";
 import { CaseStudyProvider } from "@/components/work/CaseStudyProvider";
 import { LanguageProvider } from "@/i18n/LanguageProvider";
-import { Approach } from "@/components/Approach";
-import { PlaySection } from "@/components/PlaySection";
-import { Footer } from "@/components/Footer";
 
 export default function Home() {
   return (
@@ -19,14 +16,11 @@ export default function Home() {
         <Nav />
         <main id="main">
           <Hero />
-          <Intro />
-          <Showcase />
-          <Disciplines />
-          <DigitalWork />
-          <GraphicWork />
-          <GenAiWork />
-          <Approach />
-          <PlaySection />
+          <Statement />
+          <WorkRibbon />
+          <Archive />
+          <Services />
+          <About />
         </main>
         <Footer />
       </CaseStudyProvider>

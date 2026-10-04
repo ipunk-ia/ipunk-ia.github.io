@@ -3,7 +3,7 @@
 # Keep WIDTHS in sync with images.deviceSizes + images.imageSizes in next.config.ts.
 set -euo pipefail
 
-WIDTHS=(160 320 640 768 1080 1600)
+WIDTHS=(160 320 640 768 1080 1600 2400)
 ROOT="$(cd "$(dirname "$0")/.." && pwd)/public/work"
 
 find "$ROOT" -type f \( -name '*.jpg' -o -name '*.png' \) -not -name '*-[0-9]*.webp' | while read -r src; do
@@ -16,7 +16,7 @@ find "$ROOT" -type f \( -name '*.jpg' -o -name '*.png' \) -not -name '*-[0-9]*.w
     # Never upscale: a small source keeps its own width under the larger name.
     target=$w
     if [ "$orig_w" -lt "$w" ]; then target=$orig_w; fi
-    cwebp -quiet -q 72 -resize "$target" 0 "$src" -o "$out"
+    cwebp -quiet -q 85 -resize "$target" 0 "$src" -o "$out"
   done
 done
 echo "generated"
