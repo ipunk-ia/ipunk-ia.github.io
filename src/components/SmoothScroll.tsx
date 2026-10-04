@@ -11,7 +11,7 @@ export function SmoothScroll() {
   useEffect(() => {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
-    const lenis = new Lenis({ duration: SCROLL_DURATION });
+    const lenis = new Lenis({ duration: SCROLL_DURATION, autoToggle: true });
 
     let frame = 0;
     const raf = (time: number) => {

@@ -75,10 +75,10 @@ export function ProjectModal({ project, onClose }: Props) {
         role="dialog"
         aria-modal="true"
         aria-labelledby="case-title"
-        className="relative my-0 h-fit w-full max-w-5xl bg-paper md:my-auto md:rounded-[2rem]"
+        className="relative my-0 h-fit w-full max-w-5xl bg-paper md:my-auto md:rounded-[4px]"
       >
         {/* Sticky header */}
-        <div className="sticky top-0 z-10 flex items-center justify-between gap-4 border-b border-line bg-paper/95 px-5 py-4 backdrop-blur md:rounded-t-[2rem] md:px-10">
+        <div className="sticky top-0 z-10 flex items-center justify-between gap-4 border-b border-line bg-paper/95 px-5 py-4 backdrop-blur md:rounded-t-[4px] md:px-10">
           <div className="min-w-0">
             <p className="eyebrow truncate">
               {project.index} / {pc.kind}
@@ -92,9 +92,9 @@ export function ProjectModal({ project, onClose }: Props) {
             type="button"
             onClick={onClose}
             aria-label={modal.close}
-            className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-ink text-paper transition-transform hover:rotate-90"
+            className="link shrink-0 text-[0.9375rem]"
           >
-            <span aria-hidden>✕</span>
+            {modal.close}
           </button>
         </div>
 
@@ -140,7 +140,7 @@ export function ProjectModal({ project, onClose }: Props) {
             {pc.study.map((step) => (
               <li key={step.no} className="grid gap-3 md:grid-cols-12 md:gap-8">
                 <div className="md:col-span-3">
-                  <p className="font-mono text-xs tracking-[0.16em] text-muted">{step.no}</p>
+                  <p className="text-sm tabular-nums text-muted">{step.no}</p>
                   <h3 className="mt-2 text-xl font-medium tracking-[-0.02em]">
                     {step.label}
                   </h3>
@@ -159,7 +159,7 @@ export function ProjectModal({ project, onClose }: Props) {
               {project.shots.map((shot, i) => (
                 <figure
                   key={shot.src}
-                  className={`overflow-hidden rounded-2xl border border-line bg-paper-2 ${
+                  className={`overflow-hidden bg-paper-2 ${
                     shot.ratio > 1.4 || project.shots.length === 1 ? "sm:col-span-2" : ""
                   }`}
                 >

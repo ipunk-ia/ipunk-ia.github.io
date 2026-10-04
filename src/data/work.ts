@@ -404,8 +404,9 @@ export const graphicWork: Project[] = [
       alt: "NO PRIVACY poster in orange with halftone eye",
       ratio: 1414 / 2000,
     },
-    shots: Array.from({ length: 14 }, (_, i) => {
-      const n = String(i + 1).padStart(2, "0");
+    // Posters 01, 02 and 12 were shirt graphics; they now live in the T-shirt Design project.
+    shots: [3, 4, 5, 6, 7, 8, 9, 10, 11, 13, 14].map((i) => {
+      const n = String(i).padStart(2, "0");
       return {
         src: `/work/posters/poster-${n}.jpg`,
         alt: `Poster ${n} from the random poster series`,
@@ -431,7 +432,7 @@ export const graphicWork: Project[] = [
       {
         no: "04",
         label: "Final design",
-        body: "Fourteen posters at print proportion, each carrying its own colour and subject while sharing the same typographic grid and credit system.",
+        body: "Eleven posters at print proportion, each carrying its own colour and subject while sharing the same typographic grid and credit system.",
       },
       {
         no: "05",
@@ -500,6 +501,71 @@ export const graphicWork: Project[] = [
         body: "Exported at 1920×1080, the standard YouTube thumbnail size, and checked at actual feed size, not just at full resolution, since that's the size the click decision actually happens at.",
       },
     ],
+  },
+  {
+    slug: "tshirt-design",
+    index: "10",
+    title: "T-shirt Design",
+    kind: "Apparel graphics",
+    status: "Ongoing series",
+    year: "2025",
+    focus: ["Apparel Graphics", "Illustration", "Display Lettering", "Composition"],
+    summary:
+      "Shirt graphics in two registers: loud front prints built like band merch, and the quiet typographic back prints of the ORLYX streetwear line. Either way the garment has to read from across a room.",
+    accent: "flame",
+    cover: {
+      src: "/work/tshirts/damnation.jpg",
+      alt: "Damnation t-shirt graphic: a knight on horseback inside a thorn-ringed crest under flame lettering",
+      ratio: 1100 / 1556,
+    },
+    shots: [
+      {
+        src: "/work/tshirts/dope-squad.jpg",
+        alt: "Dope Squad t-shirt graphic: a helmeted skull biting a bullet over crossed rifles",
+        ratio: 1100 / 1556,
+      },
+      {
+        src: "/work/tshirts/damnation.jpg",
+        alt: "Damnation t-shirt graphic: a knight on horseback inside a thorn-ringed crest under flame lettering",
+        ratio: 1100 / 1556,
+      },
+      {
+        src: "/work/tshirts/castigo.jpg",
+        alt: "Castigo t-shirt graphic: an engraved angel wrestling a red devil under a heavy black serif title",
+        ratio: 1414 / 2000,
+      },
+      {
+        src: "/work/tshirts/chill-astronaut.jpg",
+        alt: "Chill t-shirt graphic: a duotone astronaut inside an arch under chrome lettering, IGY 2008 to 3008",
+        ratio: 1100 / 1555,
+      },
+      {
+        src: "/work/tshirts/orlyx-tee-01.jpg",
+        alt: "ORLYX tee, back print reading How's the view from back there, small logo on the front",
+        ratio: 2200 / 1466,
+      },
+      {
+        src: "/work/tshirts/orlyx-tee-02.jpg",
+        alt: "ORLYX tee, back print Hungry in Silence, Loud Result with engraved figures",
+        ratio: 2200 / 1466,
+      },
+      {
+        src: "/work/tshirts/orlyx-tee-03.jpg",
+        alt: "ORLYX tee, back print of a figure planting an ORLYX flag, front text block",
+        ratio: 2200 / 1466,
+      },
+      {
+        src: "/work/tshirts/orlyx-tee-04.jpg",
+        alt: "ORLYX tee, back print Move Quietly, Arrive Loudly, front orange outline mark",
+        ratio: 2200 / 1466,
+      },
+      {
+        src: "/work/tshirts/burn-it.jpg",
+        alt: "Burn It tee mockup: washed black shirt with a chrome car in blue flames across the hem and a pink chest line",
+        ratio: 1802 / 1758,
+      },
+    ],
+    study: [], // case study copy lives in src/i18n/dict.ts (projects["tshirt-design"])
   },
 ];
 
@@ -577,137 +643,62 @@ export const genAiWork: Project = {
 
 export const allWork: Project[] = [...digitalWork, ...graphicWork, genAiWork];
 
-/** Full-bleed mosaic behind the hero headline, four moving rows. */
-export const mosaicRows: { src: string; alt: string; span: number }[][] = [
-  [
-    { src: "/work/posters/poster-01.jpg", alt: "", span: 1 },
-    { src: "/work/orlyx/board-01.jpg", alt: "", span: 2 },
-    { src: "/work/posters/poster-07.jpg", alt: "", span: 1 },
-    { src: "/work/wirawiri/screens.jpg", alt: "", span: 2 },
-    { src: "/work/posters/poster-03.jpg", alt: "", span: 1 },
-    { src: "/work/orlyx/slide-13.png", alt: "", span: 2 },
-  ],
-  [
-    { src: "/work/imagin/cover.jpg", alt: "", span: 2 },
-    { src: "/work/posters/poster-05.jpg", alt: "", span: 1 },
-    { src: "/work/orlyx/slide-12.png", alt: "", span: 2 },
-    { src: "/work/posters/poster-09.jpg", alt: "", span: 1 },
-    { src: "/work/wirawiri/mockup.jpg", alt: "", span: 1 },
-    { src: "/work/orlyx/slide-14.png", alt: "", span: 2 },
-  ],
-  [
-    { src: "/work/posters/poster-11.jpg", alt: "", span: 1 },
-    { src: "/work/orlyx/board-02.jpg", alt: "", span: 2 },
-    { src: "/work/posters/poster-02.jpg", alt: "", span: 1 },
-    { src: "/work/orlyx/slide-15.png", alt: "", span: 2 },
-    { src: "/work/posters/poster-12.jpg", alt: "", span: 1 },
-    { src: "/work/posters/poster-06.jpg", alt: "", span: 1 },
-  ],
-  [
-    { src: "/work/orlyx/slide-01.png", alt: "", span: 2 },
-    { src: "/work/posters/poster-13.jpg", alt: "", span: 1 },
-    { src: "/work/posters/poster-04.jpg", alt: "", span: 1 },
-    { src: "/work/orlyx/slide-05.png", alt: "", span: 2 },
-    { src: "/work/posters/poster-08.jpg", alt: "", span: 1 },
-    { src: "/work/posters/poster-10.jpg", alt: "", span: 1 },
-  ],
-  [
-    { src: "/work/orlyx/slide-02.png", alt: "", span: 2 },
-    { src: "/work/orlyx/slide-03.png", alt: "", span: 1 },
-    { src: "/work/orlyx/slide-04.png", alt: "", span: 2 },
-    { src: "/work/orlyx/slide-06.png", alt: "", span: 1 },
-    { src: "/work/orlyx/slide-07.png", alt: "", span: 2 },
-    { src: "/work/orlyx/slide-11.png", alt: "", span: 1 },
-  ],
-  [
-    { src: "/work/posters/poster-02.jpg", alt: "", span: 1 },
-    { src: "/work/imagin/cover.jpg", alt: "", span: 2 },
-    { src: "/work/posters/poster-08.jpg", alt: "", span: 1 },
-    { src: "/work/wirawiri/screens.jpg", alt: "", span: 2 },
-    { src: "/work/posters/poster-12.jpg", alt: "", span: 1 },
-    { src: "/work/orlyx/board-02.jpg", alt: "", span: 2 },
-  ],
+/* ------------------------------------------------------------------ *
+ * HOME PAGE PICKS - which pictures each section shows
+ * ------------------------------------------------------------------ */
+
+export type Pic = { src: string; alt: string };
+
+/** Welcome stack, opened one by one. The last one is also the front frame of the hero stack. */
+export const welcomeFrames: Pic[] = [
+  { src: "/work/tshirts/dope-squad.jpg", alt: "" },
+  { src: "/work/gen-ai/honey-lemon-beer.jpg", alt: "" },
+  { src: "/work/imagin/cover.jpg", alt: "" },
+  { src: "/work/posters/poster-11.jpg", alt: "" },
+  { src: "/work/posters/poster-07.jpg", alt: "No Privacy poster from the Random Poster Series" },
 ];
 
-export type ShowcaseCard = {
-  slug: string;
-  src: string;
-  alt: string;
-  title: string;
-  desc: string;
-  category: "UI/UX" | "Web" | "Brand" | "Poster";
-};
-
-/** Tilted card rail under the intro. */
-export const showcaseCards: ShowcaseCard[] = [
-  {
-    slug: "imagin-studio",
-    src: "/work/imagin/cover.jpg",
-    alt: "Imagin Studio website",
-    title: "Imagin Studio",
-    desc: "A live studio site for a 3D product film team, built so the render itself is the proof.",
-    category: "Web",
-  },
-  {
-    slug: "wira-wiri",
-    src: "/work/wirawiri/screens.jpg",
-    alt: "Wira Wiri app screens",
-    title: "Wira Wiri",
-    desc: "Travel app putting local guides, local food, and travel money into one flow.",
-    category: "UI/UX",
-  },
-  {
-    slug: "orlyx",
-    src: "/work/orlyx/board-01.jpg",
-    alt: "ORLYX brand guide",
-    title: "ORLYX Identity",
-    desc: "A streetwear identity built on restraint: one mark, one line, nothing louder.",
-    category: "Brand",
-  },
-  {
-    slug: "poster-series",
-    src: "/work/posters/poster-07.jpg",
-    alt: "No Privacy poster",
-    title: "Random Posters",
-    desc: "Fourteen posters where one idea has to land while someone scrolls past.",
-    category: "Poster",
-  },
-  {
-    slug: "wira-wiri",
-    src: "/work/wirawiri/mockup.jpg",
-    alt: "Wira Wiri onboarding",
-    title: "Wira Wiri Onboarding",
-    desc: "Photography carries the mood, the interface stays quiet and out of the way.",
-    category: "UI/UX",
-  },
-  {
-    slug: "orlyx",
-    src: "/work/orlyx/slide-12.png",
-    alt: "ORLYX apparel and social",
-    title: "ORLYX Apparel",
-    desc: "The mark taken from screen to garment, packaging, and a social feed system.",
-    category: "Brand",
-  },
-  {
-    slug: "poster-series",
-    src: "/work/posters/poster-11.jpg",
-    alt: "Poster from the series",
-    title: "Print Explorations",
-    desc: "Halftone, duotone, and condensed type pushed until the photo becomes texture.",
-    category: "Poster",
-  },
+/** The rest of the hero deck, behind the welcome's last frame. The loop shuffles them through the front. */
+export const heroStack: Pic[] = [
+  { src: "/work/tshirts/damnation.jpg", alt: "Damnation t-shirt graphic" },
+  { src: "/work/imagin/cover.jpg", alt: "Imagin Studio website" },
+  { src: "/work/posters/poster-03.jpg", alt: "Poster from the Random Poster Series" },
+  { src: "/work/wirawiri/screens.jpg", alt: "Wira Wiri app screens" },
+  { src: "/work/tshirts/chill-astronaut.jpg", alt: "Chill astronaut t-shirt graphic" },
+  { src: "/work/posters/poster-11.jpg", alt: "Poster from the Random Poster Series" },
 ];
 
-/** Thumbnails used by the moving strips in the hero. */
-export const heroStrip = [
-  { src: "/work/imagin/cover.jpg", alt: "Imagin Studio site", tag: "Web" },
-  { src: "/work/wirawiri/screens.jpg", alt: "Wira Wiri app screens", tag: "UI/UX" },
-  { src: "/work/posters/poster-07.jpg", alt: "No Privacy poster", tag: "Poster" },
-  { src: "/work/orlyx/board-01.jpg", alt: "ORLYX brand guide", tag: "Brand" },
-  { src: "/work/posters/poster-03.jpg", alt: "Poster series", tag: "Poster" },
-  { src: "/work/wirawiri/mockup.jpg", alt: "Wira Wiri mockup", tag: "UI/UX" },
-  { src: "/work/posters/poster-11.jpg", alt: "Poster series", tag: "Print" },
-  { src: "/work/orlyx/slide-12.png", alt: "ORLYX apparel", tag: "Apparel" },
-  { src: "/work/posters/poster-05.jpg", alt: "Poster series", tag: "Poster" },
-  { src: "/work/orlyx/slide-14.png", alt: "ORLYX packaging", tag: "Brand" },
+/** Case studies on the WebGL ribbon, in the order a studio reviewer should meet them. */
+export const ribbonOrder = [
+  "orlyx",
+  "poster-series",
+  "tshirt-design",
+  "imagin-studio",
+  "niso-studio",
+  "wira-wiri",
+  "wastu-home-building",
+  "webzonly",
+  "youtube-thumbnails",
+  "gen-ai",
 ] as const;
+
+/** Scattered archive grid. col/span are 12-column positions on desktop; drop shifts the tile down. */
+export const archiveTiles: (Pic & { slug: string; ratio: number; col: number; span: number; drop: number })[] = [
+  { slug: "poster-series", src: "/work/posters/poster-07.jpg", alt: "No Privacy poster", ratio: 1100 / 1556, col: 1, span: 3, drop: 8 },
+  { slug: "orlyx", src: "/work/orlyx/slide-13.png", alt: "ORLYX identity applied to packaging", ratio: 1580 / 889, col: 5, span: 4, drop: 16 },
+  { slug: "poster-series", src: "/work/posters/poster-13.jpg", alt: "Poster from the Random Poster Series", ratio: 1100 / 1556, col: 10, span: 3, drop: 0 },
+  { slug: "orlyx", src: "/work/orlyx/board-02.jpg", alt: "ORLYX brand guide board", ratio: 2200 / 1237, col: 1, span: 5, drop: 6 },
+  { slug: "youtube-thumbnails", src: "/work/thumbnails/uber-i-was-wrong.jpg", alt: "YouTube thumbnail composite", ratio: 16 / 9, col: 7, span: 3, drop: 2 },
+  { slug: "gen-ai", src: "/work/gen-ai/honey-lemon-beer.jpg", alt: "Honey Lemon beer poster made with image generation", ratio: 1493 / 2000, col: 11, span: 2, drop: 14 },
+  { slug: "poster-series", src: "/work/posters/poster-05.jpg", alt: "Poster from the Random Poster Series", ratio: 1100 / 1556, col: 2, span: 3, drop: 4 },
+  { slug: "tshirt-design", src: "/work/tshirts/damnation.jpg", alt: "Damnation t-shirt graphic", ratio: 1100 / 1556, col: 5, span: 3, drop: 10 },
+  { slug: "tshirt-design", src: "/work/tshirts/chill-astronaut.jpg", alt: "Chill astronaut t-shirt graphic", ratio: 1100 / 1555, col: 10, span: 3, drop: 6 },
+  { slug: "gen-ai", src: "/work/gen-ai/chrome-couture.jpg", alt: "Generated chrome couture portrait", ratio: 896 / 1280, col: 8, span: 2, drop: 12 },
+];
+
+/** One picture per service row, shown beside the cursor on hover. */
+export const servicePics: Pic[] = [
+  { src: "/work/wirawiri/screens.jpg", alt: "" },
+  { src: "/work/imagin/cover.jpg", alt: "" },
+  { src: "/work/posters/poster-07.jpg", alt: "" },
+];
