@@ -93,8 +93,8 @@ export function Nav() {
 
           <div className="hidden items-center justify-end gap-6 md:flex">
             {langSwitch}
-            <a href={`mailto:${site.email}`} className="link">
-              {copy.nav.email}
+            <a href={site.instagramUrl} target="_blank" rel="noreferrer noopener" className="link">
+              {copy.nav.contact}
             </a>
           </div>
 
@@ -139,8 +139,14 @@ export function Nav() {
           </ul>
 
           <div className="mt-auto flex items-end justify-between gap-6 pt-16 text-[1rem]">
-            <a href={`mailto:${site.email}`} className="link" onClick={() => setIsOpen(false)}>
-              {site.email}
+            <a
+              href={site.instagramUrl}
+              target="_blank"
+              rel="noreferrer noopener"
+              className="link"
+              onClick={() => setIsOpen(false)}
+            >
+              @{site.instagram}
             </a>
             {langSwitch}
           </div>

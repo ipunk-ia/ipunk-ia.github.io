@@ -17,7 +17,7 @@ type ProjectCopy = {
 };
 
 export type Copy = {
-  nav: { links: { label: string; href: string }[]; email: string; skip: string; menu: string; close: string };
+  nav: { links: { label: string; href: string }[]; contact: string; skip: string; menu: string; close: string };
   welcome: string;
   hero: { left: string; right: string; disciplines: [string, string]; city: string };
   statement: { text: string; notes: [string, string][] };
@@ -25,7 +25,7 @@ export type Copy = {
   archive: { title: string };
   services: { title: [string, string]; rows: { title: string; body: string }[] };
   about: { label: string; text: string; body: string; caption: string; badge: string };
-  footer: { talk: string; note: string; sayHi: string; follow: string; rights: string };
+  footer: { talk: string; note: string; follow: string; rights: string };
   modal: {
     type: string;
     focus: string;
@@ -45,7 +45,7 @@ const en: Copy = {
       { label: "Services", href: "#services" },
       { label: "About", href: "#about" },
     ],
-    email: "Email me",
+    contact: "DM me",
     skip: "Skip to content",
     menu: "Menu",
     close: "Close",
@@ -100,8 +100,7 @@ const en: Copy = {
   },
   footer: {
     talk: "Let's talk",
-    note: "Need a designer who can take a brief from interface to poster? Start with an email.",
-    sayHi: "Say hi at",
+    note: "Need a designer who can take a brief from interface to poster? Start with a DM on Instagram.",
     follow: "Follow on",
     rights: "All rights reserved",
   },
@@ -450,7 +449,7 @@ const id: Copy = {
       { label: "Layanan", href: "#services" },
       { label: "Tentang", href: "#about" },
     ],
-    email: "Kirim email",
+    contact: "Kirim DM",
     skip: "Lompat ke konten",
     menu: "Menu",
     close: "Tutup",
@@ -505,8 +504,7 @@ const id: Copy = {
   },
   footer: {
     talk: "Ayo ngobrol",
-    note: "Butuh desainer yang bisa membawa brief dari antarmuka sampai poster? Mulai dengan email.",
-    sayHi: "Sapa di",
+    note: "Butuh desainer yang bisa membawa brief dari antarmuka sampai poster? Mulai dengan DM di Instagram.",
     follow: "Ikuti di",
     rights: "Hak cipta dilindungi",
   },

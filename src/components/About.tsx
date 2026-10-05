@@ -8,7 +8,7 @@ import { useCursorFollower } from "@/lib/useCursorFollower";
 
 const BADGE_OFFSET_PX = 24;
 
-/** One plain statement about how the work gets made; an email badge trails the cursor across it. */
+/** One plain statement about how the work gets made; a contact badge trails the cursor across it. */
 export function About() {
   const { about } = useCopy();
   const { ref: badgeRef, move, reset } = useCursorFollower<HTMLAnchorElement>();
@@ -33,12 +33,19 @@ export function About() {
         </p>
 
         {/* Touch: a plain link under the statement. Mouse: the same link trails the cursor as a badge. */}
-        <a href={`mailto:${site.email}`} className="link shell mt-8 block text-[1.0625rem] md:hidden">
-          {about.badge} &rarr; {site.email}
+        <a
+          href={site.instagramUrl}
+          target="_blank"
+          rel="noreferrer noopener"
+          className="link shell mt-8 block text-[1.0625rem] md:hidden"
+        >
+          {about.badge} &rarr; @{site.instagram}
         </a>
         <a
           ref={badgeRef}
-          href={`mailto:${site.email}`}
+          href={site.instagramUrl}
+          target="_blank"
+          rel="noreferrer noopener"
           tabIndex={-1}
           aria-hidden="true"
           className="about-badge absolute left-0 top-0 hidden rounded-full bg-ink px-4 py-2 text-[0.9375rem] text-paper md:block"

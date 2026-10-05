@@ -17,7 +17,7 @@ One designer who covers the full range a studio hires for: brand and poster work
 
 ## Operating Context
 - Reviewers arrive from a job application, CV link, or DM, usually on desktop, sometimes on a phone.
-- Contact happens by email (ivanghazali.creative@gmail.com). WhatsApp was deliberately removed. Instagram handle: ghazali.yyy.
+- Contact happens via Instagram DM (handle: ghazali.yyy). Email and WhatsApp are deliberately not shown on the site.
 - Copy is bilingual, English default with an Indonesian toggle (`src/i18n/dict.ts`).
 
 ## Capabilities and Constraints
