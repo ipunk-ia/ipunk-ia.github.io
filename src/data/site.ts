@@ -5,15 +5,15 @@ export const site = {
   location: "Semarang, Indonesia",
   experience: "2 years",
   tagline: "Designing interfaces that work and visuals that get remembered.",
-  email: "ivanghazali.creative@gmail.com",
   instagram: "ghazali.yyy",
+  instagramUrl: "https://instagram.com/ghazali.yyy",
 } as const;
 
 export const socials = [
   {
-    label: "Email",
-    value: site.email,
-    href: `mailto:${site.email}`,
+    label: "Instagram",
+    value: `@${site.instagram}`,
+    href: site.instagramUrl,
   },
 ] as const;
 
