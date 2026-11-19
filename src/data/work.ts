@@ -644,6 +644,12 @@ export const genAiWork: Project = {
 export const allWork: Project[] = [...digitalWork, ...graphicWork, genAiWork];
 
 /* ------------------------------------------------------------------ *
+ * T-SHIRT DESIGN - standalone export for the TshirtSection component
+ * ------------------------------------------------------------------ */
+
+export const tshirtWork = graphicWork.find((p) => p.slug === "tshirt-design")!;
+
+/* ------------------------------------------------------------------ *
  * HOME PAGE PICKS - which pictures each section shows
  * ------------------------------------------------------------------ */
 

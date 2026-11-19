@@ -3,6 +3,7 @@ import { Hero } from "@/components/Hero";
 import { Statement } from "@/components/Statement";
 import { WorkRibbon } from "@/components/WorkRibbon";
 import { Archive } from "@/components/Archive";
+import { TshirtSection } from "@/components/TshirtSection";
 import { Services } from "@/components/Services";
 import { About } from "@/components/About";
 import { Footer } from "@/components/Footer";
@@ -19,6 +20,7 @@ export default function Home() {
           <Statement />
           <WorkRibbon />
           <Archive />
+          <TshirtSection />
           <Services />
           <About />
         </main>
