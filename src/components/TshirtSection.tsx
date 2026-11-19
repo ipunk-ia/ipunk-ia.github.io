@@ -12,12 +12,14 @@ export function TshirtSection() {
   const project = tshirtWork;
   const projectCopy = projects["tshirt-design"];
 
-  // Front graphics (first 4 shots)
-  const frontGraphics = project.shots.slice(0, 4);
-  // Feature streetwear mockups (burn-it and orlyx-tee-01)
-  const featureMockups = [project.shots[8], project.shots[4]]; // burn-it, orlyx-tee-01
-  // Streetwear line trio (orlyx-tee-02, 03, 04)
-  const trioMockups = project.shots.slice(5, 8);
+  // New t-shirt designs (first 6 shots - the newly added photos)
+  const newDesigns = project.shots.slice(0, 6);
+  // Original front graphics (dope-squad, damnation, castigo, chill-astronaut) - now at indices 6-9
+  const frontGraphics = project.shots.slice(6, 10);
+  // Feature streetwear mockups (burn-it at index 14, orlyx-tee-01 at index 10)
+  const featureMockups = [project.shots[14], project.shots[10]]; // burn-it, orlyx-tee-01
+  // Streetwear line trio (orlyx-tee-02, 03, 04 at indices 11, 12, 13)
+  const trioMockups = project.shots.slice(11, 14);
 
   return (
     <Reveal as="section" id="tshirts" className="bg-paper pb-24 pt-20 text-ink md:pb-36 md:pt-28">
@@ -43,11 +45,48 @@ export function TshirtSection() {
         </button>
       </div>
 
-      {/* Part 1: Front print graphics */}
+      {/* Part 1: New T-shirt Designs (from your photos) */}
       <div className="shell mt-12 md:mt-16">
         <div className="flex items-center justify-between border-b border-line pb-3">
+          <p className="eyebrow">New Designs</p>
+          <span className="text-xs text-muted tabular-nums">01 &mdash; 06</span>
+        </div>
+
+        <div className="mt-6 grid grid-cols-2 gap-4 sm:gap-6 md:grid-cols-3 lg:grid-cols-6">
+          {newDesigns.map((shot, i) => (
+            <button
+              key={shot.src}
+              type="button"
+              onClick={() => open("tshirt-design")}
+              className="group block w-full text-left"
+            >
+              <div
+                className="relative w-full overflow-hidden bg-paper-2"
+                style={{ aspectRatio: `${shot.ratio}` }}
+              >
+                <Image
+                  src={shot.src}
+                  alt={shot.alt}
+                  fill
+                  sizes="(min-width: 1024px) 16vw, (min-width: 768px) 33vw, 50vw"
+                  className="scale-[1.01] object-cover transition-transform duration-700 ease-[var(--ease-out-expo)] group-hover:scale-[1.04]"
+                />
+              </div>
+              <div className="mt-3">
+                <span className="link text-[0.9375rem] font-medium group-hover:decoration-current">
+                  {shot.alt}
+                </span>
+              </div>
+            </button>
+          ))}
+        </div>
+      </div>
+
+      {/* Part 2: Front print graphics (original designs) */}
+      <div className="shell mt-16 md:mt-24">
+        <div className="flex items-center justify-between border-b border-line pb-3">
           <p className="eyebrow">{tshirtSection.categories.graphics}</p>
-          <span className="text-xs text-muted tabular-nums">01 &mdash; 04</span>
+          <span className="text-xs text-muted tabular-nums">07 &mdash; 10</span>
         </div>
 
         <div className="mt-6 grid grid-cols-2 gap-4 sm:gap-6 md:grid-cols-4">
@@ -83,11 +122,11 @@ export function TshirtSection() {
         </div>
       </div>
 
-      {/* Part 2: Streetwear Apparel & Mockups */}
+      {/* Part 3: Streetwear Apparel & Mockups */}
       <div className="shell mt-16 md:mt-24">
         <div className="flex items-center justify-between border-b border-line pb-3">
           <p className="eyebrow">{tshirtSection.categories.streetwear}</p>
-          <span className="text-xs text-muted tabular-nums">05 &mdash; 09</span>
+          <span className="text-xs text-muted tabular-nums">11 &mdash; 15</span>
         </div>
 
         {/* 2 feature cards */}
