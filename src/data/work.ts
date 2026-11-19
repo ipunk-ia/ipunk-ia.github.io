@@ -519,36 +519,7 @@ export const graphicWork: Project[] = [
       ratio: 1100 / 1556,
     },
     shots: [
-      {
-        src: "/work/tshirts/tshirt-01.jpg",
-        alt: "T-shirt design 01",
-        ratio: 1100 / 1556,
-      },
-      {
-        src: "/work/tshirts/tshirt-02.jpg",
-        alt: "T-shirt design 02",
-        ratio: 1100 / 1556,
-      },
-      {
-        src: "/work/tshirts/tshirt-03.jpg",
-        alt: "T-shirt design 03",
-        ratio: 1414 / 2000,
-      },
-      {
-        src: "/work/tshirts/tshirt-04.jpg",
-        alt: "T-shirt design 04",
-        ratio: 1100 / 1555,
-      },
-      {
-        src: "/work/tshirts/tshirt-05.jpg",
-        alt: "T-shirt design 05",
-        ratio: 2200 / 1466,
-      },
-      {
-        src: "/work/tshirts/tshirt-06.jpg",
-        alt: "T-shirt design 06",
-        ratio: 2200 / 1466,
-      },
+
       {
         src: "/work/tshirts/dope-squad.jpg",
         alt: "Dope Squad t-shirt graphic: a helmeted skull biting a bullet over crossed rifles",
@@ -593,6 +564,36 @@ export const graphicWork: Project[] = [
         src: "/work/tshirts/burn-it.jpg",
         alt: "Burn It tee mockup: washed black shirt with a chrome car in blue flames across the hem and a pink chest line",
         ratio: 1802 / 1758,
+      },
+      {
+        src: "/work/tshirts/tshirt-01.jpg",
+        alt: "",
+        ratio: 2200 / 1466,
+      },
+      {
+        src: "/work/tshirts/tshirt-02.jpg",
+        alt: "",
+        ratio: 2200 / 1466,
+      },
+      {
+        src: "/work/tshirts/tshirt-03.jpg",
+        alt: "",
+        ratio: 2200 / 1466,
+      },
+      {
+        src: "/work/tshirts/tshirt-04.jpg",
+        alt: "",
+        ratio: 2200 / 1466,
+      },
+      {
+        src: "/work/tshirts/tshirt-05.jpg",
+        alt: "",
+        ratio: 2200 / 1466,
+      },
+      {
+        src: "/work/tshirts/tshirt-06.jpg",
+        alt: "",
+        ratio: 2200 / 1466,
       },
     ],
     study: [], // case study copy lives in src/i18n/dict.ts (projects["tshirt-design"])
