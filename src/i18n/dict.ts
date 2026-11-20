@@ -22,6 +22,19 @@ export type Copy = {
   hero: { left: string; right: string; disciplines: [string, string]; city: string };
   statement: { text: string; notes: [string, string][] };
   work: { title: string; hint: string; open: string; prev: string; next: string };
+  tshirtSection: {
+    title: string;
+    tagline: string;
+    viewCase: string;
+    categories: {
+      graphics: string;
+      streetwear: string;
+    };
+    items: {
+      name: string;
+      caption: string;
+    }[];
+  };
   archive: { title: string };
   services: { title: [string, string]; rows: { title: string; body: string }[] };
   about: { label: string; text: string; body: string; caption: string; badge: string };
@@ -70,6 +83,26 @@ const en: Copy = {
     open: "Open case study",
     prev: "Previous",
     next: "Next",
+  },
+  tshirtSection: {
+    title: "T-shirt Design",
+    tagline: "Shirt graphics in two registers: loud front prints built like band merch, and the quiet typographic back prints of the ORLYX streetwear line. Either way the garment has to read from across a room.",
+    viewCase: "View case study",
+    categories: {
+      graphics: "Front Print Graphics",
+      streetwear: "Streetwear Apparel & Mockups",
+    },
+    items: [
+      { name: "Dope Squad", caption: "Helmeted skull biting a bullet over crossed rifles, weathered metal block lettering." },
+      { name: "Damnation", caption: "Knight on horseback inside a thorn-ringed crest, flame-edged blackletter." },
+      { name: "Castigo", caption: "Engraved angel wrestling a red devil under a heavy black serif title." },
+      { name: "Chill", caption: "Duotone astronaut inside an arch under chrome lettering, IGY 2008–3008." },
+      { name: "Burn It", caption: "Washed black tee, chrome car in blue flames across the hem, pink chest line." },
+      { name: "ORLYX — View from Back There", caption: "Back print: \"How's the view from back there\", small front logo." },
+      { name: "ORLYX — Hungry in Silence", caption: "Back print: \"Hungry in Silence, Loud Result\" with engraved figures." },
+      { name: "ORLYX — Plant the Flag", caption: "Back print of a figure planting an ORLYX flag, front text block." },
+      { name: "ORLYX — Move Quietly", caption: "Back print: \"Move Quietly, Arrive Loudly\", front orange outline mark." },
+    ],
   },
   archive: {
     title: "Posters, identity boards and images, made to land in one glance.",
@@ -474,6 +507,26 @@ const id: Copy = {
     open: "Buka studi kasus",
     prev: "Sebelumnya",
     next: "Berikutnya",
+  },
+  tshirtSection: {
+    title: "Desain Kaos",
+    tagline: "Grafis kaos dalam dua karakter: sablon depan yang lantang seperti merch band, dan sablon punggung tipografis yang tenang untuk lini streetwear ORLYX. Apa pun karakternya, kaos harus terbaca dari seberang ruangan.",
+    viewCase: "Lihat studi kasus",
+    categories: {
+      graphics: "Grafis Sablon Depan",
+      streetwear: "Apparel & Mockup Streetwear",
+    },
+    items: [
+      { name: "Dope Squad", caption: "Tengkuluk helm menggigit peluru di atas senapan menyilang, huruf blok logam yang aus." },
+      { name: "Damnation", caption: "Kuda dan pengendara di dalam lambang berduri, blackletter bertepi api." },
+      { name: "Castigo", caption: "Malaikat bergaya gravir bergulat iblis merah di bawah judul serif hitam tebal." },
+      { name: "Chill", caption: "Astronaut duotone di dalam lengkungan di bawah huruf chrome, IGY 2008–3008." },
+      { name: "Burn It", caption: "Kaos hitam cuci, mobil chrome dalam api biru melintasi hem, garis pink di dada." },
+      { name: "ORLYX — View from Back There", caption: "Sablon punggung: \"How's the view from back there\", logo kecil di dada." },
+      { name: "ORLYX — Hungry in Silence", caption: "Sablon punggung: \"Hungry in Silence, Loud Result\" dengan figur bergaya gravir." },
+      { name: "ORLYX — Plant the Flag", caption: "Sablon punggung figur menancapkan bendera ORLYX, blok teks di depan." },
+      { name: "ORLYX — Move Quietly", caption: "Sablon punggung: \"Move Quietly, Arrive Loudly\", outline oranye di depan." },
+    ],
   },
   archive: {
     title: "Poster, papan identitas, dan gambar, dibuat untuk sampai dalam sekali lihat.",
