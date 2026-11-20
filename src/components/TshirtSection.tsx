@@ -13,13 +13,25 @@ export function TshirtSection() {
   const projectCopy = projects["tshirt-design"];
 
   // New t-shirt designs (first 6 shots - the newly added photos)
-  const newDesigns = project.shots.slice(0, 6);
-  // Original front graphics (dope-squad, damnation, castigo, chill-astronaut) - now at indices 6-9
-  const frontGraphics = project.shots.slice(6, 10);
-  // Feature streetwear mockups (burn-it at index 14, orlyx-tee-01 at index 10)
-  const featureMockups = [project.shots[14], project.shots[10]]; // burn-it, orlyx-tee-01
-  // Streetwear line trio (orlyx-tee-02, 03, 04 at indices 11, 12, 13)
-  const trioMockups = project.shots.slice(11, 14);
+  const newDesigns = project.shots.filter((s) => s.src.includes("/tshirt-0"));
+  // Original front graphics (dope-squad, damnation, castigo, chill-astronaut)
+  const frontGraphics = [
+    project.shots.find((s) => s.src.includes("dope-squad")),
+    project.shots.find((s) => s.src.includes("damnation")),
+    project.shots.find((s) => s.src.includes("castigo")),
+    project.shots.find((s) => s.src.includes("chill-astronaut")),
+  ].filter((s): s is NonNullable<typeof s> => !!s);
+  // Feature streetwear mockups (burn-it, orlyx-tee-01)
+  const featureMockups = [
+    project.shots.find((s) => s.src.includes("burn-it")),
+    project.shots.find((s) => s.src.includes("orlyx-tee-01")),
+  ].filter((s): s is NonNullable<typeof s> => !!s);
+  // Streetwear line trio (orlyx-tee-02, 03, 04)
+  const trioMockups = [
+    project.shots.find((s) => s.src.includes("orlyx-tee-02")),
+    project.shots.find((s) => s.src.includes("orlyx-tee-03")),
+    project.shots.find((s) => s.src.includes("orlyx-tee-04")),
+  ].filter((s): s is NonNullable<typeof s> => !!s);
 
   return (
     <Reveal as="section" id="tshirts" className="bg-paper pb-24 pt-20 text-ink md:pb-36 md:pt-28">

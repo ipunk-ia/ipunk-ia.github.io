@@ -519,7 +519,36 @@ export const graphicWork: Project[] = [
       ratio: 1100 / 1556,
     },
     shots: [
-
+      {
+        src: "/work/tshirts/tshirt-01.jpg",
+        alt: "T-shirt 01",
+        ratio: 1435 / 801,
+      },
+      {
+        src: "/work/tshirts/tshirt-02.jpg",
+        alt: "T-shirt 02",
+        ratio: 1134 / 631,
+      },
+      {
+        src: "/work/tshirts/tshirt-03.jpg",
+        alt: "T-shirt 03",
+        ratio: 1260 / 702,
+      },
+      {
+        src: "/work/tshirts/tshirt-04.jpg",
+        alt: "T-shirt 04",
+        ratio: 1258 / 699,
+      },
+      {
+        src: "/work/tshirts/tshirt-05.jpg",
+        alt: "T-shirt 05",
+        ratio: 1360 / 759,
+      },
+      {
+        src: "/work/tshirts/tshirt-06.jpg",
+        alt: "T-shirt 06",
+        ratio: 1600 / 890,
+      },
       {
         src: "/work/tshirts/dope-squad.jpg",
         alt: "Dope Squad t-shirt graphic: a helmeted skull biting a bullet over crossed rifles",
@@ -564,36 +593,6 @@ export const graphicWork: Project[] = [
         src: "/work/tshirts/burn-it.jpg",
         alt: "Burn It tee mockup: washed black shirt with a chrome car in blue flames across the hem and a pink chest line",
         ratio: 1802 / 1758,
-      },
-      {
-        src: "/work/tshirts/tshirt-01.jpg",
-        alt: "",
-        ratio: 2200 / 1466,
-      },
-      {
-        src: "/work/tshirts/tshirt-02.jpg",
-        alt: "",
-        ratio: 2200 / 1466,
-      },
-      {
-        src: "/work/tshirts/tshirt-03.jpg",
-        alt: "",
-        ratio: 2200 / 1466,
-      },
-      {
-        src: "/work/tshirts/tshirt-04.jpg",
-        alt: "",
-        ratio: 2200 / 1466,
-      },
-      {
-        src: "/work/tshirts/tshirt-05.jpg",
-        alt: "",
-        ratio: 2200 / 1466,
-      },
-      {
-        src: "/work/tshirts/tshirt-06.jpg",
-        alt: "",
-        ratio: 2200 / 1466,
       },
     ],
     study: [], // case study copy lives in src/i18n/dict.ts (projects["tshirt-design"])
